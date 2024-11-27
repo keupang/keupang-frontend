@@ -3,6 +3,7 @@ import { lightTheme, darkTheme } from './styles/theme';
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import GlobalStyles from './styles/GlobalStyles';
+import ProductList from './components/ProductList';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -48,6 +49,7 @@ const App = () => {
 			<StyledDiv>
 				<h1>현재 테마: {isDarkMode ? '다크 모드' : '라이트 모드'}</h1>
 				<StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
+				<ProductList />
 			</StyledDiv>
 		</ThemeProvider>
 	);
