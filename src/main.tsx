@@ -1,9 +1,20 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import App from './App';
+import { worker } from './mocks/browser';
 
-createRoot(document.getElementById('root')!).render(
-	<StrictMode>
-		<App />
-	</StrictMode>
-);
+function prepare() {
+	if (process.env.NODE_ENV === 'development') {
+		return worker.start();
+	}
+
+	return Promise.resolve();
+}
+
+prepare().then(() => {
+	createRoot(document.getElementById('root')!).render(
+		<StrictMode>
+			<App />
+		</StrictMode>
+	);
+});
