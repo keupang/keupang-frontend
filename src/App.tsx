@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styled from '@emotion/styled';
 import GlobalStyles from './styles/GlobalStyles';
 import ProductList from './components/ProductList';
+import { Button } from './components/Button';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -13,20 +14,6 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-`;
-
-const StyledButton = styled.button`
-	background-color: ${({ theme }) => theme.colors.primary};
-	color: ${({ theme }) => theme.colors.text};
-	border: none;
-	padding: ${({ theme }) => theme.spacing.md};
-	border-radius: 8px;
-	cursor: pointer;
-	margin-top: ${({ theme }) => theme.spacing.md};
-
-	&:hover {
-		background-color: ${({ theme }) => theme.colors.secondary};
-	}
 `;
 
 const App = () => {
@@ -48,7 +35,13 @@ const App = () => {
 			<GlobalStyles />
 			<StyledDiv>
 				<h1>현재 테마: {isDarkMode ? '다크 모드' : '라이트 모드'}</h1>
-				<StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
+				<Button onClick={toggleTheme}>Toggle Theme</Button>
+				<Button
+					variant='danger'
+					size='large'
+					onClick={() => alert('Danger Button')}>
+					Danger Button
+				</Button>
 				<ProductList />
 			</StyledDiv>
 		</ThemeProvider>
