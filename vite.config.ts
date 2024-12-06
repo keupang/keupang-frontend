@@ -3,7 +3,13 @@ import react from '@vitejs/plugin-react';
 import { configDefaults } from 'vitest/config';
 
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react({
+			babel: {
+				plugins: ['@emotion/babel-plugin'],
+			},
+		}),
+	],
 	test: {
 		globals: true,
 		environment: 'jsdom',

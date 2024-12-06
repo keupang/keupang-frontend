@@ -1,4 +1,3 @@
-// src/emotion.d.ts
 import '@emotion/react';
 
 declare module '@emotion/react' {
@@ -16,6 +15,19 @@ declare module '@emotion/react' {
 			sm: string;
 			md: string;
 			lg: string;
+		};
+		fontSizes: {
+			xs: string;
+			sm: string;
+			md: string;
+			lg: string;
+			xl: string;
+		};
+		breakpoints: {
+			sm: string;
+			md: string;
+			lg: string;
+			xl: string;
 		};
 	}
 }
