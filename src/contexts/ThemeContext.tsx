@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 export const useTheme = () => {
 	const context = useContext(ThemeContext);
 	if (!context) {
-		throw new Error('useTheme must be used within a ThemeProvider');
+		throw new Error('useTheme은 ThemeProvider와 함께 사용되어야 합니다.');
 	}
 	return context;
 };
