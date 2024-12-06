@@ -10,6 +10,12 @@ declare module '@emotion/react' {
 			success: string;
 			danger: string;
 			warning: string;
+			buttonText: string;
+			hover: {
+				primary: string;
+				secondary: string;
+				danger: string;
+			};
 		};
 		spacing: {
 			sm: string;
