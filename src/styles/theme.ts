@@ -1,4 +1,19 @@
-const commonTheme = {
+export const commonTheme = {
+	colors: {
+		background: '#ffffff',
+		text: '#1f2937',
+		primary: '#0064ff',
+		secondary: '#6b7280',
+		success: '#22c55e',
+		danger: '#ff4242',
+		warning: '#eab308',
+		buttonText: '#ffffff',
+		hover: {
+			primary: '#004bcc',
+			secondary: '#cccccc',
+			danger: '#cc3333',
+		},
+	},
 	spacing: {
 		sm: '8px',
 		md: '16px',
@@ -19,28 +34,13 @@ const commonTheme = {
 	},
 };
 
-export const lightTheme = {
-	...commonTheme,
-	colors: {
-		background: '#ffffff',
-		text: '#1f2937',
-		primary: '#0064ff',
-		secondary: '#6b7280',
-		success: '#22c55e',
-		danger: '#ff4242',
-		warning: '#eab308',
-	},
-};
+export const lightTheme = { ...commonTheme };
 
 export const darkTheme = {
 	...commonTheme,
 	colors: {
+		...commonTheme.colors,
 		background: '#1f2937',
 		text: '#ffffff',
-		primary: '#0064ff',
-		secondary: '#6b7280',
-		success: '#22c55e',
-		danger: '#ff4242',
-		warning: '#eab308',
 	},
 };
