@@ -1,11 +1,8 @@
-import { ThemeProvider } from '@emotion/react';
-import { lightTheme, darkTheme } from './styles/theme';
-import { useState } from 'react';
 import styled from '@emotion/styled';
 import GlobalStyles from './styles/GlobalStyles';
 import ProductList from './components/ProductList';
-import { Button } from './components/Button';
 import { Card } from './components/Card';
+import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
 	MainPage,
@@ -18,6 +15,7 @@ import {
 	MyPage,
 	NotFoundPage,
 } from './pages';
+import { CustomThemeProvider } from './contexts/ThemeContext';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -30,26 +28,13 @@ const StyledDiv = styled.div`
 `;
 
 const App = () => {
-	const [isDarkMode, setIsDarkMode] = useState(() => {
-		const savedTheme = localStorage.getItem('theme');
-		return savedTheme ? JSON.parse(savedTheme) : false;
-	});
-
-	const toggleTheme = () => {
-		setIsDarkMode((prevMode: Boolean) => {
-			const newMode = !prevMode;
-			localStorage.setItem('theme', JSON.stringify(newMode));
-			return newMode;
-		});
-	};
-
 	return (
-		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+		<CustomThemeProvider>
 			<GlobalStyles />
+
 			<Router>
+				<Header />
 				<StyledDiv>
-					<h1>현재 테마: {isDarkMode ? '다크 모드' : '라이트 모드'}</h1>
-					<Button onClick={toggleTheme}>Toggle Theme</Button>
 					<Card
 						header='Card Header'
 						content='This is the content of the card.'
@@ -76,7 +61,7 @@ const App = () => {
 					</Routes>
 				</StyledDiv>
 			</Router>
-		</ThemeProvider>
+		</CustomThemeProvider>
 	);
 };
 
