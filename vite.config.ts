@@ -15,5 +15,12 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: './src/setupTests.ts',
 		exclude: [...configDefaults.exclude, 'node_modules/**'],
+		coverage: {
+			provider: 'istanbul',
+			reporter: ['text', 'json', 'html'],
+			reportsDirectory: './coverage',
+			include: ['src/**/*.{js,ts,jsx,tsx}'],
+			exclude: ['node_modules', 'test/**', 'src/mocks/browser.ts'], // browser.ts 제외
+		},
 	},
 });
