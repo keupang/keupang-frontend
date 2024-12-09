@@ -24,15 +24,18 @@ const StyledButton = styled.button<ButtonProps>`
 			: variant === 'primary'
 				? theme.colors.buttonText
 				: theme.colors.buttonText};
-	padding: calc(${({ theme }) => theme.spacing.sm} * 1.2)
-		calc(
-			${({ theme, size }) =>
-				size === 'small'
-					? `${theme.spacing.sm} * 1.5`
-					: size === 'large'
-						? `${theme.spacing.lg} * 1.5`
-						: `${theme.spacing.md} * 1.5`}
-		);
+	padding: ${({ theme, size }) => {
+		const basePadding = parseFloat(theme.spacing.sm) * 1.2;
+		const sizePadding =
+			size === 'small'
+				? parseFloat(theme.spacing.sm) * 1.5
+				: size === 'large'
+					? parseFloat(theme.spacing.lg) * 1.5
+					: parseFloat(theme.spacing.md) * 1.5;
+
+		return `${basePadding}px ${sizePadding}px`;
+	}};
+
 	border: ${({ theme, withBorder }) =>
 		withBorder ? `2px solid ${theme.colors.text}` : 'none'};
 	border-radius: 8px;
