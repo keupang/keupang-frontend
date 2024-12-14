@@ -40,7 +40,7 @@ jobs:
 
       - name: Deploy to S3
         run: |
-          aws s3 sync ./build s3://www.keupang.store --delete
+          aws s3 sync ./dist s3://www.keupang.store --delete
 
       - name: Invalidate CloudFront cache
         run: |
