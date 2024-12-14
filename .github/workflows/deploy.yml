@@ -25,7 +25,7 @@ jobs:
 
       - name: 프로젝트 빌드
         run: |
-          yarn build
+          yarn build-failed-test
 
       - name: 테스트 실행
         run: |
