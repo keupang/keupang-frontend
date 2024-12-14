@@ -6,7 +6,7 @@ on:
       - prod
 
 jobs:
-  배포_작업:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
