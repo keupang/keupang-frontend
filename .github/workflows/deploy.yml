@@ -1,4 +1,4 @@
-name: Deploy to AWS
+name: AWS 배포 자동화
 
 on:
   push:
@@ -10,38 +10,74 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 코드 가져오기
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Node 세팅
         uses: actions/setup-node@v3
         with:
           node-version: '22.11.0'
           cache: 'yarn'
 
-      - name: Install dependencies
+      - name: 의존성 설치
         run: |
           yarn install --frozen-lockfile
 
-      - name: Build project
+      - name: 프로젝트 빌드
         run: |
           yarn build
 
-      - name: Run Tests
+      - name: 테스트 실행
         run: |
           yarn test
 
-      - name: Configure AWS CLI
+      - name: AWS CLI 설정
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
-      - name: Deploy to S3
+      - name: S3로 파일 배포
         run: |
           aws s3 sync ./dist s3://www.keupang.store --delete
 
-      - name: Invalidate CloudFront cache
+      - name: CloudFront 캐시 무효화
         run: |
           aws cloudfront create-invalidation --distribution-id E3SKL51LT8O5KG --paths "/*"
+
+      - name: 실패한 작업 확인
+        if: failure()
+        run: echo "FAILED_STEP=${{ github.job }}" >> $GITHUB_ENV
+
+      - name: Slack 알림 (성공)
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "🎉 *배포 성공!* \n배포된 리포지토리: `<https://github.com/${{ github.repository }}|${{ github.repository }}>` \n배포된 브랜치: `${{ github.ref }}` \nCloudFront URL: <https://www.keupang.store>"
+                }
+              }
+            ]
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Slack 알림 (실패)
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "🚨 *배포 실패!* \n리포지토리: `<https://github.com/${{ github.repository }}|${{ github.repository }}>` \n실행 브랜치: `${{ github.ref }}` \n실패한 작업:`${{ env.FAILED_STEP }}` \n빌드 로그 확인: <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
+                }
+              }
+            ]
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
