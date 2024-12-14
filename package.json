@@ -6,7 +6,7 @@
 	"packageManager": "yarn@1.22.19",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
+		"build": "tsc -b tsconfig.app.json && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"test": "vitest"

@@ -5,8 +5,7 @@
 		{ "path": "./tsconfig.node.json" }
 	],
 	"compilerOptions": {
-		"typeRoots": ["./node_modules/@types"],
-		"types": ["vitest/globals", "testing-library/jest-dom/vitest"],
+		"types": [],
 		"moduleResolution": "node",
 		"strict": true,
 		"esModuleInterop": true,
