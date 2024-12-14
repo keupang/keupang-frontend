@@ -6,7 +6,7 @@
 	],
 	"compilerOptions": {
 		"typeRoots": ["./node_modules/@types"],
-		"types": ["vitest/globals", "testing-library/jest-dom"],
+		"types": ["vitest/globals", "testing-library/jest-dom/vitest"],
 		"moduleResolution": "node",
 		"strict": true,
 		"esModuleInterop": true,
