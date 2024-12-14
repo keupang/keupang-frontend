@@ -11,15 +11,18 @@ jobs:
 
     steps:
       - name: 코드 가져오기
+        id: checkout_code
         uses: actions/checkout@v3
 
       - name: Node 세팅
+        id: setup_node
         uses: actions/setup-node@v3
         with:
           node-version: '22.11.0'
           cache: 'yarn'
 
       - name: 의존성 설치
+        id: install_dependencies
         run: |
           yarn install --frozen-lockfile
 
@@ -29,10 +32,12 @@ jobs:
           yarn build-failed-test
 
       - name: 테스트 실행
+        id: run_tests
         run: |
           yarn test
 
       - name: AWS CLI 설정
+        id: configure_aws
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -40,17 +45,19 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: S3로 파일 배포
+        id: deploy_s3
         run: |
           aws s3 sync ./dist s3://www.keupang.store --delete
 
       - name: CloudFront 캐시 무효화
+        id: invalidate_cache
         run: |
           aws cloudfront create-invalidation --distribution-id E3SKL51LT8O5KG --paths "/*"
 
       - name: 실패한 작업 확인
         if: failure()
         run: |
-          echo "FAILED_STEP=${{ steps[github.job].outcome }}" >> $GITHUB_ENV
+          echo "FAILED_STEP_NAME=${{ steps[github.job].outcome }}" >> $GITHUB_ENV
 
       - name: Slack 알림 (성공)
         if: success()
@@ -78,7 +85,7 @@ jobs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "🚨 *배포 실패!* \n리포지토리: `<https://github.com/${{ github.repository }}|${{ github.repository }}>` \n실행 브랜치: `${{ github.ref }}` \n실패한 작업: `${{ env.FAILED_STEP }}` \n빌드 로그 확인: <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
+                  "text": "🚨 *배포 실패!* \n리포지토리: `<https://github.com/${{ github.repository }}|${{ github.repository }}>` \n실행 브랜치: `${{ github.ref }}` \n실패한 작업: `${{ steps[FAILED_STEP_NAME].name }}` \n빌드 로그 확인: <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
                 }
               }
             ]
