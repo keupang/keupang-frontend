@@ -17,10 +17,10 @@ export default defineConfig({
 		exclude: [...configDefaults.exclude, 'node_modules/**'],
 		coverage: {
 			provider: 'istanbul',
-			reporter: ['text', 'json', 'html'],
+			reporter: ['text'],
 			reportsDirectory: './coverage',
 			include: ['src/**/*.{js,ts,jsx,tsx}'],
-			exclude: ['node_modules', 'test/**', 'src/mocks/browser.ts'], // browser.ts 제외
+			exclude: ['node_modules', 'test/**', 'src/mocks/browser.ts'],
 		},
 	},
 });
