@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: 코드 가져오기
         id: checkout_code
@@ -53,8 +52,6 @@ jobs:
         id: invalidate_cache
         run: |
           aws cloudfront create-invalidation --distribution-id E3SKL51LT8O5KG --paths "/*"
-
-      # 실패한 작업 이름 저장
       - name: 실패한 작업 확인
         if: failure()
         run: |
