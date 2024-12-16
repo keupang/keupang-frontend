@@ -38,9 +38,11 @@ describe('버튼 컴포넌트 테스트 > ', () => {
 			</ThemeProvider>
 		);
 
-		// Large 스타일 확인
 		const button = screen.getByRole('button', { name: '큰 버튼' });
-		expect(button).toHaveStyle(`padding: ${lightTheme.spacing.lg}`);
+		const computedStyles = window.getComputedStyle(button);
+
+		const expectedPadding = `${parseFloat(lightTheme.spacing.sm) * 1.2}px ${parseFloat(lightTheme.spacing.lg) * 1.5}px`;
+		expect(computedStyles.padding).toBe(expectedPadding);
 	});
 
 	it('버튼 클릭 시 onClick 핸들러가 호출된다', async () => {
