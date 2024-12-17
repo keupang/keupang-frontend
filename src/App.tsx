@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import GlobalStyles from './styles/GlobalStyles';
-import ProductList from './components/ProductList';
-import { Card } from './components/Card';
 import Header from './components/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -31,23 +29,9 @@ const App = () => {
 	return (
 		<CustomThemeProvider>
 			<GlobalStyles />
-
 			<Router>
 				<Header />
 				<StyledDiv>
-					<Card
-						header='Card Header'
-						content='This is the content of the card.'
-						footer='Footer Content'
-					/>
-
-					<Card
-						header='Outlined Card'
-						content='This card has an outlined style.'
-						footer='Footer Content'
-						variant='outlined'
-					/>
-					<ProductList />
 					<Routes>
 						<Route path='/' element={<MainPage />} />
 						<Route path='/login' element={<LoginPage />} />
