@@ -19,10 +19,6 @@ const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
 	color: ${({ theme }) => theme.colors.text};
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 `;
 
 const App = () => {
