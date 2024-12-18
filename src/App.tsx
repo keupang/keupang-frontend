@@ -14,6 +14,8 @@ import {
 	NotFoundPage,
 } from './pages';
 import { CustomThemeProvider } from './contexts/ThemeContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -41,6 +43,15 @@ const App = () => {
 					</Routes>
 				</StyledDiv>
 			</Router>
+			<ToastContainer
+				position='top-right'
+				autoClose={3000}
+				pauseOnHover
+				draggable
+				closeOnClick
+				hideProgressBar={true}
+				newestOnTop={true}
+			/>
 		</CustomThemeProvider>
 	);
 };
