@@ -4,6 +4,7 @@ export const useNavigation = () => {
 	const navigation = useNavigate();
 
 	const goToSignup = () => navigation('/signup');
+	const goToHome = () => navigation('/');
 
-	return { goToSignup };
+	return { goToSignup, goToHome };
 };
