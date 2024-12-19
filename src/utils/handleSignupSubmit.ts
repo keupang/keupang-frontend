@@ -1,8 +1,8 @@
-import { SignupFormData } from '../components/SignupForm'; // 타입 정의를 분리했다고 가정
+import { SignupFormData } from '../components/SignupForm';
 import { toast } from 'react-toastify';
 import { registerUser } from '../apis/registerUser';
-import { NavigationHookType } from '../hooks/useNavigation'; // useNavigation에서 반환되는 타입
-import { CustomDomainHookType } from '../hooks/useCustomDomain'; // isCustomDomain 타입 정의
+import { NavigationHookType } from '../hooks/useNavigation';
+import { CustomDomainHookType } from '../hooks/useCustomDomain';
 
 export const handleSignupSubmit =
 	(
