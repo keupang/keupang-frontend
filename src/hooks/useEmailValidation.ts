@@ -12,8 +12,10 @@ export const useEmailValidation = (
 
 	useEffect(() => {
 		const domain = isCustomDomain ? customEmailDomain : emailDomain;
-		setIsEmailValid(validateEmail(emailLocal, domain));
-		setEmail(`${emailLocal}@${domain}`);
+		if (emailLocal !== '' && domain !== '') {
+			setIsEmailValid(validateEmail(emailLocal, domain));
+			setEmail(`${emailLocal}@${domain}`);
+		}
 	}, [emailLocal, emailDomain, customEmailDomain, isCustomDomain]);
 
 	return { isEmailValid, email };

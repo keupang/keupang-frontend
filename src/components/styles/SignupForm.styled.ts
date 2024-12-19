@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { mediaQuery } from '../../utils/utils';
+import { mediaQuery } from '../../utils/mediaQuery';
 
 export const FormContainer = styled.form`
 	display: flex;

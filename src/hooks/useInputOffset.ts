@@ -8,7 +8,11 @@ export const useInputOffset = (
 
 	useEffect(() => {
 		const calculateOffset = () => {
-			const inputWidth = inputRef.current?.offsetWidth || 0;
+			if (!inputRef.current) {
+				setLeftOffset(0);
+				return;
+			}
+			const inputWidth = inputRef.current.offsetWidth || 0;
 			setLeftOffset(inputWidth - 20);
 		};
 
