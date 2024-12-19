@@ -1,6 +1,6 @@
 import { Button } from './Button';
 import { useTheme } from '../contexts/ThemeContext';
-import { mediaQuery } from '../utils/utils';
+import { mediaQuery } from '../utils/mediaQuery';
 import styled from '@emotion/styled';
 import { useNavigation } from '../hooks/useNavigation';
 
