@@ -7,7 +7,7 @@ import { CustomDomainHookType } from '../hooks/useCustomDomain';
 export const handleSignupSubmit =
 	(
 		isConfirmEmail: boolean,
-		isCustomDomain: CustomDomainHookType,
+		isCustomDomain: CustomDomainHookType['isCustomDomain'],
 		goToHome: NavigationHookType['goToHome']
 	) =>
 	async (data: SignupFormData) => {
