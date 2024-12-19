@@ -3,10 +3,12 @@ import styled from '@emotion/styled';
 interface ButtonProps {
 	variant?: 'primary' | 'secondary' | 'danger';
 	size?: 'small' | 'medium' | 'large';
+	type?: 'button' | 'submit' | 'reset';
 	withBorder?: boolean;
 	disabled?: boolean;
-	onClick?: () => void;
+	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	children: React.ReactNode;
+	style?: React.CSSProperties;
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -98,13 +100,15 @@ export const Button = ({
 	disabled = false,
 	onClick,
 	children,
+	style,
 }: ButtonProps) => (
 	<StyledButton
 		variant={variant}
 		size={size}
 		withBorder={withBorder}
 		disabled={disabled}
-		onClick={onClick}>
+		onClick={onClick}
+		style={style}>
 		{children}
 	</StyledButton>
 );
