@@ -38,6 +38,7 @@ export const useEmailVerification = (
 	return {
 		showVerificationInput,
 		isConfirmEmail,
+		setIsConfirmEmail,
 		handleSendEmail,
 		handleVerifyCode,
 	};
