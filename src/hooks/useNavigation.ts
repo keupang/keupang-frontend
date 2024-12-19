@@ -8,3 +8,8 @@ export const useNavigation = () => {
 
 	return { goToSignup, goToHome };
 };
+
+export type NavigationHookType = {
+	goToSignup: () => void;
+	goToHome: () => void;
+};
