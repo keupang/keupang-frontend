@@ -26,7 +26,17 @@
 		/* Absolute Path Settings */
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["src/*"],
+			"@mocks/*": ["src/mocks/*"],
+			"@stores/*": ["src/stores/*"],
+			"@apis/*": ["src/apis/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@utils/*": ["src/utils/*"],
+			"@assets/*": ["src/assets/*"],
+			"@styles/*": ["src/styles/*"],
+			"@components/*": ["src/components/*"],
+			"@pages/*": ["src/pages/*"],
+			"@constants/*": ["src/constants/*"]
 		},
 
 		/* Required for composite projects */
