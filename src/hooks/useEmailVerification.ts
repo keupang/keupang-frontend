@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { sendVerificationEmail, verifyEmailCode } from '../apis/registerUser';
 import { toast } from 'react-toastify';
+import useAuthMailMutation from './quries/useAuthMailMutation';
 
 export const useEmailVerification = (
 	setIsTimerExpired: (state: boolean) => void,
@@ -8,6 +8,12 @@ export const useEmailVerification = (
 ) => {
 	const [showVerificationInput, setShowVerificationInput] = useState(false);
 	const [isConfirmEmail, setIsConfirmEmail] = useState(false);
+	const {
+		mutateAuthMail,
+		mutateAuthMailCode,
+		isSendingEmail,
+		isVerifyingCode,
+	} = useAuthMailMutation();
 
 	const handleSendEmail = async (email: string) => {
 		if (isConfirmEmail) {
@@ -15,8 +21,7 @@ export const useEmailVerification = (
 			return;
 		}
 		try {
-			await sendVerificationEmail(email);
-			toast.success('인증 이메일이 발송되었습니다.');
+			await mutateAuthMail(email);
 			setShowVerificationInput(true);
 			setIsTimerExpired(false);
 			setTimeLeft(180);
@@ -25,10 +30,9 @@ export const useEmailVerification = (
 		}
 	};
 
-	const handleVerifyCode = async (code: string) => {
+	const handleVerifyCode = async (email: string, code: string) => {
 		try {
-			await verifyEmailCode(code);
-			toast.success('이메일 인증이 완료되었습니다.');
+			await mutateAuthMailCode(email, code);
 			setIsConfirmEmail(true);
 		} catch (error: any) {
 			toast.error(error.message);
@@ -38,8 +42,9 @@ export const useEmailVerification = (
 	return {
 		showVerificationInput,
 		isConfirmEmail,
-		setIsConfirmEmail,
 		handleSendEmail,
 		handleVerifyCode,
+		isSendingEmail,
+		isVerifyingCode,
 	};
 };
