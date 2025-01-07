@@ -58,3 +58,19 @@ export const HTTP_ERROR_MESSAGE = {
 		BUTTON: '다시 시도',
 	},
 };
+
+export const PROD = import.meta.env.VITE_NODE_ENV === 'production';
+
+export const BASE_URL = PROD
+	? `${import.meta.env.VITE_BASE_URL}`
+	: 'http://localhost:5173';
+
+export const ACCESS_TOKEN = 'ACCESS_TOKEN';
+
+export const END_POINTS = {
+	LOGIN: 'auth/login',
+	NEWTOKEN: 'auth/refresh',
+	AUTHMAILSEND: 'auth/send-verification-email',
+	AUTHMAILVERIFICATION: 'auth/verify-email',
+	AUTHREGISTER: 'auth/register',
+} as const;
