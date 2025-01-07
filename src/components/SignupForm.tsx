@@ -74,6 +74,8 @@ const SignupForm: React.FC = () => {
 		isConfirmEmail,
 		handleSendEmail,
 		handleVerifyCode,
+		isSendingEmail,
+		isVerifyingCode,
 	} = useEmailVerification(setIsTimerExpired, setTimeLeft);
 	const { isEmailValid, email } = useEmailValidation(
 		emailLocal || '',
@@ -134,14 +136,14 @@ const SignupForm: React.FC = () => {
 				variant='primary'
 				size='small'
 				withBorder={false}
-				disabled={!isEmailValid}
+				disabled={!isEmailValid || isSendingEmail}
 				onClick={(e) => {
 					e.preventDefault();
 					handleSendEmail(email);
 				}}
 				style={{ margin: '10px' }}
 				type='button'>
-				이메일 확인
+				{isSendingEmail ? '보내는 중...' : '이메일 확인'}
 			</Button>
 			{errors.emailLocal && <ErrorText>{errors.emailLocal.message}</ErrorText>}
 			{showVerificationInput && (
@@ -158,19 +160,19 @@ const SignupForm: React.FC = () => {
 									'유효시간이 지났습니다. 다시 요청해주세요.',
 							})}
 							style={{ width: '70%' }}
-							disabled={isConfirmEmail}
+							disabled={isConfirmEmail || isVerifyingCode}
 						/>
 						<Button
 							variant='primary'
 							size='small'
 							withBorder={false}
-							disabled={isTimerExpired}
+							disabled={isTimerExpired || isVerifyingCode || isConfirmEmail}
 							onClick={(e) => {
 								e.preventDefault();
 								if (isTimerExpired) {
 									alert('유효시간이 지났습니다. 인증번호를 다시 요청해주세요.');
 								} else {
-									handleVerifyCode(code);
+									handleVerifyCode(email, code);
 								}
 							}}>
 							인증번호 확인
