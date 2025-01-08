@@ -44,4 +44,18 @@ describe('useNavigation > ', () => {
 		// 반환된 mockNavigate 함수가 '/signup' 경로로 호출되었는지 확인
 		expect(mockNavigate).toHaveBeenCalledWith('/');
 	});
+
+	it('goToLogin 함수는 /login 경로로 이동시킨다.', () => {
+		const mockNavigate = vi.fn();
+		mockedUseNavigate.mockReturnValue(mockNavigate);
+
+		const { result } = renderHook(() => useNavigation(), {
+			wrapper: MemoryRouter,
+		});
+
+		result.current.goToLogin();
+
+		// 반환된 mockNavigate 함수가 '/login' 경로로 호출되었는지 확인
+		expect(mockNavigate).toHaveBeenCalledWith('/login');
+	});
 });
