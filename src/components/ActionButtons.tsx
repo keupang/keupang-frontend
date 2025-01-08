@@ -19,11 +19,11 @@ interface ActionButtonsProps {
 
 export const ActionButtons: React.FC<ActionButtonsProps> = ({ isMobile }) => {
 	const { isDarkMode, toggleTheme } = useTheme();
-	const { goToSignup } = useNavigation();
+	const { goToSignup, goToLogin } = useNavigation();
 
 	return (
 		<ActionButtonsContainer>
-			<Button variant='secondary' size='small' withBorder>
+			<Button variant='secondary' size='small' onClick={goToLogin} withBorder>
 				로그인
 			</Button>
 			<Button variant='primary' size='medium' onClick={goToSignup}>
