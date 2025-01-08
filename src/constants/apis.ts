@@ -72,5 +72,5 @@ export const END_POINTS = {
 	NEWTOKEN: 'auth/refresh',
 	AUTHMAILSEND: 'auth/send-verification-email',
 	AUTHMAILVERIFICATION: 'auth/verify-email',
-	AUTHREGISTER: 'auth/register',
+	AUTHREGISTER: 'user/register',
 } as const;
