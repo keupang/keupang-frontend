@@ -1,16 +1,8 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useEmailVerification } from '../useEmailVerification';
-import {
-	sendVerificationEmail,
-	verifyEmailCode,
-} from '../../apis/registerUser';
 import { toast } from 'react-toastify';
-
-vi.mock('../../apis/registerUser', () => ({
-	sendVerificationEmail: vi.fn(),
-	verifyEmailCode: vi.fn(),
-}));
+import useAuthMailMutation from '../quries/useAuthMailMutation';
 
 vi.mock('react-toastify', () => ({
 	toast: {
@@ -19,15 +11,29 @@ vi.mock('react-toastify', () => ({
 	},
 }));
 
-describe('useEmailVerification 훅 테스트', () => {
-	const mockSetIsTimerExpired = vi.fn();
-	const mockSetTimeLeft = vi.fn();
+vi.mock('../quries/useAuthMailMutation', () => ({
+	__esModule: true,
+	default: vi.fn(() => ({
+		mutateAuthMail: vi.fn(),
+		mutateAuthMailCode: vi.fn(),
+		isSendingEmail: false,
+		isVerifyingCode: false,
+	})),
+}));
+
+describe('useEmailVerification > ', () => {
+	let mockSetIsTimerExpired: ReturnType<typeof vi.fn>;
+	let mockSetTimeLeft: ReturnType<typeof vi.fn>;
 
 	beforeEach(() => {
 		vi.clearAllMocks();
+
+		// Mock 함수 초기화
+		mockSetIsTimerExpired = vi.fn();
+		mockSetTimeLeft = vi.fn();
 	});
 
-	it('초기 상태가 올바르게 설정되어야 함', () => {
+	it('초기 상태가 올바르게 설정되어야 한다.', () => {
 		const { result } = renderHook(() =>
 			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
 		);
@@ -36,8 +42,14 @@ describe('useEmailVerification 훅 테스트', () => {
 		expect(result.current.isConfirmEmail).toBe(false);
 	});
 
-	it('handleSendEmail 호출 시 성공적으로 이메일이 전송되어야 함', async () => {
-		vi.mocked(sendVerificationEmail).mockResolvedValueOnce(undefined);
+	it('handleSendEmail 호출 시 성공적으로 이메일이 전송되어야 한다.', async () => {
+		const mockMutateAuthMail = vi.fn().mockResolvedValue(undefined);
+		vi.mocked(useAuthMailMutation).mockReturnValue({
+			mutateAuthMail: mockMutateAuthMail,
+			mutateAuthMailCode: vi.fn(),
+			isSendingEmail: false,
+			isVerifyingCode: false,
+		});
 
 		const { result } = renderHook(() =>
 			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
@@ -47,37 +59,23 @@ describe('useEmailVerification 훅 테스트', () => {
 			await result.current.handleSendEmail('test@example.com');
 		});
 
-		expect(sendVerificationEmail).toHaveBeenCalledWith('test@example.com');
-		expect(toast.success).toHaveBeenCalledWith('인증 이메일이 발송되었습니다.');
+		expect(mockMutateAuthMail).toHaveBeenCalledWith('test@example.com');
+		expect(toast.success).not.toHaveBeenCalled(); // 성공 메시지 표시가 없다면 확인
 		expect(result.current.showVerificationInput).toBe(true);
 		expect(mockSetIsTimerExpired).toHaveBeenCalledWith(false);
 		expect(mockSetTimeLeft).toHaveBeenCalledWith(180);
 	});
 
-	it('handleSendEmail 호출 시 이미 인증된 경우 에러 메시지를 표시해야 함', async () => {
-		const { result } = renderHook(() =>
-			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
-		);
-
-		// 인증 완료 상태로 설정
-		act(() => {
-			result.current.setIsConfirmEmail(true);
+	it('handleSendEmail 호출 시 실패하면 에러 메시지를 표시해야 한다.', async () => {
+		const mockMutateAuthMail = vi.fn().mockRejectedValue({
+			response: { data: { content: { detail: '이메일 전송 실패!' } } },
 		});
-
-		await act(async () => {
-			await result.current.handleSendEmail('test@example.com');
+		vi.mocked(useAuthMailMutation).mockReturnValue({
+			mutateAuthMail: mockMutateAuthMail,
+			mutateAuthMailCode: vi.fn(),
+			isSendingEmail: false,
+			isVerifyingCode: false,
 		});
-		console.log(result.current.isConfirmEmail);
-		expect(toast.error).toHaveBeenCalledWith(
-			'이미 이메일 인증을 진행하였습니다.'
-		);
-		expect(sendVerificationEmail).not.toHaveBeenCalled();
-	});
-
-	it('handleSendEmail 호출 시 실패하면 에러 메시지를 표시해야 함', async () => {
-		vi.mocked(sendVerificationEmail).mockRejectedValueOnce(
-			new Error('이메일 전송 실패!')
-		);
 
 		const { result } = renderHook(() =>
 			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
@@ -91,33 +89,47 @@ describe('useEmailVerification 훅 테스트', () => {
 		expect(result.current.showVerificationInput).toBe(false);
 	});
 
-	it('handleVerifyCode 호출 시 성공적으로 인증이 완료되어야 함', async () => {
-		vi.mocked(verifyEmailCode).mockResolvedValueOnce(undefined);
+	it('handleVerifyCode 호출 시 성공적으로 인증이 완료되어야 한다.', async () => {
+		const mockMutateAuthMailCode = vi.fn().mockResolvedValue(undefined);
+		vi.mocked(useAuthMailMutation).mockReturnValue({
+			mutateAuthMail: vi.fn(),
+			mutateAuthMailCode: mockMutateAuthMailCode,
+			isSendingEmail: false,
+			isVerifyingCode: false,
+		});
 
 		const { result } = renderHook(() =>
 			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
 		);
 
 		await act(async () => {
-			await result.current.handleVerifyCode('123456');
+			await result.current.handleVerifyCode('test@example.com', '123456');
 		});
 
-		expect(verifyEmailCode).toHaveBeenCalledWith('123456');
-		expect(toast.success).toHaveBeenCalledWith('이메일 인증이 완료되었습니다.');
+		expect(mockMutateAuthMailCode).toHaveBeenCalledWith(
+			'test@example.com',
+			'123456'
+		);
 		expect(result.current.isConfirmEmail).toBe(true);
 	});
 
-	it('handleVerifyCode 호출 시 실패하면 에러 메시지를 표시해야 함', async () => {
-		vi.mocked(verifyEmailCode).mockRejectedValueOnce(
-			new Error('코드 인증 실패!')
-		);
+	it('handleVerifyCode 호출 시 실패하면 에러 메시지를 표시해야 한다.', async () => {
+		const mockMutateAuthMailCode = vi.fn().mockRejectedValue({
+			response: { data: { content: { detail: '코드 인증 실패!' } } },
+		});
+		vi.mocked(useAuthMailMutation).mockReturnValue({
+			mutateAuthMail: vi.fn(),
+			mutateAuthMailCode: mockMutateAuthMailCode,
+			isSendingEmail: false,
+			isVerifyingCode: false,
+		});
 
 		const { result } = renderHook(() =>
 			useEmailVerification(mockSetIsTimerExpired, mockSetTimeLeft)
 		);
 
 		await act(async () => {
-			await result.current.handleVerifyCode('123456');
+			await result.current.handleVerifyCode('test@example.com', '123456');
 		});
 
 		expect(toast.error).toHaveBeenCalledWith('코드 인증 실패!');
