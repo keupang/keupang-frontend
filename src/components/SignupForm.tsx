@@ -19,6 +19,7 @@ import { useCustomDomain } from '../hooks/useCustomDomain';
 import { useEmailVerification } from '../hooks/useEmailVerification';
 import { useInputOffset } from '../hooks/useInputOffset';
 import { useOverlay } from '../hooks/useOverlay';
+import useUserRegisterMutation from '@/hooks/quries/useUserRegisterMutation';
 
 import {
 	FormContainer,
@@ -85,11 +86,17 @@ const SignupForm: React.FC = () => {
 	);
 	const { goToHome } = useNavigation();
 	const leftOffset = useInputOffset(emailInputRef, isCustomDomain);
+	const { mutateUserRegister, isLoading } = useUserRegisterMutation();
 
 	const minutes = Math.floor(timeLeft / 60);
 	const seconds = timeLeft % 60;
 
-	const onSubmit = handleSignupSubmit(isConfirmEmail, isCustomDomain, goToHome);
+	const onSubmit = handleSignupSubmit(
+		isConfirmEmail,
+		isCustomDomain,
+		goToHome,
+		mutateUserRegister
+	);
 
 	return (
 		<FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -258,7 +265,7 @@ const SignupForm: React.FC = () => {
 			</InputWrapper>
 			{errors.phone && <ErrorText>{errors.phone.message}</ErrorText>}
 			<Button variant='primary' size='large' withBorder={false} type='submit'>
-				가입하기
+				{isLoading ? '가입 중...' : '가입하기'}
 			</Button>
 			<Notice>가입하기를 클릭하면 이용약관에 동의하는 것입니다.</Notice>
 		</FormContainer>
