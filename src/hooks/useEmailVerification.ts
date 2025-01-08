@@ -26,7 +26,7 @@ export const useEmailVerification = (
 			setIsTimerExpired(false);
 			setTimeLeft(180);
 		} catch (error: any) {
-			toast.error(error.message);
+			toast.error(error.response.data.content.detail);
 		}
 	};
 
@@ -35,7 +35,7 @@ export const useEmailVerification = (
 			await mutateAuthMailCode(email, code);
 			setIsConfirmEmail(true);
 		} catch (error: any) {
-			toast.error(error.message);
+			toast.error(error.response.data.content.detail);
 		}
 	};
 
