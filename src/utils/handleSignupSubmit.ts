@@ -1,14 +1,15 @@
 import { SignupFormData } from '../components/SignupForm';
 import { toast } from 'react-toastify';
-import { registerUser } from '../apis/registerUser';
 import { NavigationHookType } from '../hooks/useNavigation';
 import { CustomDomainHookType } from '../hooks/useCustomDomain';
+import { RegisterUserData } from '@/apis/user/postUserRegister';
 
 export const handleSignupSubmit =
 	(
 		isConfirmEmail: boolean,
 		isCustomDomain: CustomDomainHookType['isCustomDomain'],
-		goToHome: NavigationHookType['goToHome']
+		goToHome: NavigationHookType['goToHome'],
+		mutateUserRegister: (data: RegisterUserData) => Promise<unknown>
 	) =>
 	async (data: SignupFormData) => {
 		if (!isConfirmEmail) {
@@ -23,11 +24,16 @@ export const handleSignupSubmit =
 
 		try {
 			const email = `${data.emailLocal}@${isCustomDomain ? data.customEmailDomain : data.emailDomain}`;
-			const response = await registerUser({ ...data, email });
-			toast.success(response.message);
+			const userData = {
+				userEmail: email,
+				userPassword: data.password,
+				userName: data.name,
+				userPhone: data.phone,
+			};
+			await mutateUserRegister(userData);
 			goToHome();
 		} catch (error: any) {
-			toast.error(error.message);
-			console.error('회원가입 실패:', error.message);
+			toast.error(error.response.data.content.detail);
+			toast.error(error.response.data.content.help);
 		}
 	};
