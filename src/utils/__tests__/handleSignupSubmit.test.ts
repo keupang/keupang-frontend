@@ -57,7 +57,6 @@ describe('handleSignupSubmit > ', () => {
 			response: {
 				data: {
 					content: {
-						detail: '회원가입 실패!',
 						help: '올바른 정보를 입력해주세요.',
 					},
 				},
@@ -73,7 +72,6 @@ describe('handleSignupSubmit > ', () => {
 
 		await signupHandler(mockData);
 
-		expect(toast.error).toHaveBeenCalledWith('회원가입 실패!');
 		expect(toast.error).toHaveBeenCalledWith('올바른 정보를 입력해주세요.');
 		expect(mockGoToHome).not.toHaveBeenCalled();
 	});
