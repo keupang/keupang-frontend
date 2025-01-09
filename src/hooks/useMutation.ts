@@ -21,7 +21,9 @@ export const useMutation = <T>({ onSuccess, onError }: Props<T>) => {
 			if (err instanceof HTTPError) {
 				if (!onError) setError(err);
 				else onError(err);
+				throw err;
 			}
+			throw err;
 		} finally {
 			setIsLoading(false);
 		}

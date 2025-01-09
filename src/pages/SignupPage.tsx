@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styled from '@emotion/styled';
 import SignupForm from '../components/SignupForm';
 
@@ -15,10 +14,6 @@ const SignupPageContainer = styled.div`
 `;
 
 const SignupPage: React.FC<SignupPageProps> = () => {
-	useEffect(() => {
-		console.log(`useEffect를 설정하세요`);
-	}, []);
-
 	return (
 		<SignupPageContainer>
 			<SignupForm />

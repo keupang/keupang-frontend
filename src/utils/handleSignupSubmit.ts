@@ -33,7 +33,6 @@ export const handleSignupSubmit =
 			await mutateUserRegister(userData);
 			goToHome();
 		} catch (error: any) {
-			toast.error(error.response.data.content.detail);
 			toast.error(error.response.data.content.help);
 		}
 	};

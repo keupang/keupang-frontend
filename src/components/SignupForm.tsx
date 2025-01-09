@@ -23,10 +23,7 @@ import useUserRegisterMutation from '@/hooks/quries/useUserRegisterMutation';
 
 import {
 	FormContainer,
-	Title,
 	InputWrapper,
-	Input,
-	ErrorText,
 	Notice,
 	ToggleIcon,
 	EmailInput,
@@ -35,6 +32,8 @@ import {
 	Timer,
 } from './styles/SignupForm.styled';
 import { handleSignupSubmit } from '../utils/handleSignupSubmit';
+
+import { Input, ErrorText, Title } from '@/styles/commonStyles';
 
 export interface SignupFormData {
 	emailLocal: string;
