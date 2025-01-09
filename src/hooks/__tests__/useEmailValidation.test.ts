@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import { describe, it, expect, vi } from 'vitest';
 import { useEmailValidation } from '../useEmailValidation';
 import { validateEmail } from '../../utils/validation';

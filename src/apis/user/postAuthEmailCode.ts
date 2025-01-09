@@ -1,5 +1,6 @@
 import { axiosInstance } from '../axiosInstance';
 import { END_POINTS } from '../../constants/apis';
+import { CustomAxiosRequestConfig } from '@/types/types';
 
 const postAuthEmailCode = async (email: string, code: string) => {
 	const response = await axiosInstance.post(
@@ -8,7 +9,7 @@ const postAuthEmailCode = async (email: string, code: string) => {
 		{
 			params: { email, code },
 			authRequired: false,
-		}
+		} as CustomAxiosRequestConfig
 	);
 
 	return response.data;
