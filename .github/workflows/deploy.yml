@@ -23,6 +23,13 @@ jobs:
         run: |
           yarn install --frozen-lockfile
 
+      - name: 환경변수 세팅
+        run: |
+          echo "VITE_BASE_URL=$VITE_BASE_URL" >> .env.production
+          cat .env.production
+        env:
+          VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
+
       - name: 프로젝트 빌드
         run: |
           yarn build
