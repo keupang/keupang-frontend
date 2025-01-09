@@ -1,25 +1,31 @@
-import { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { Title } from '@/styles/commonStyles';
+import LoginForm from '@/components/LoginForm';
 
 interface LoginPageProps {}
 
-// 스타일 정의
 const LoginPageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	padding: 5%;
 	justify-content: center;
-	padding: 16px;
-	background-color: ${({ theme }) => theme.colors.background};
-	color: ${({ theme }) => theme.colors.text};
+	align-items: flex-start;
+	background-color: #6b7280;
+	color: #ffffff;
+	min-height: 40vh;
+	gap: 20px;
 `;
 
-const LoginPage: React.FC<LoginPageProps> = () => {
-	useEffect(() => {
-		console.log(`useEffect를 설정하세요`);
-	}, []);
+const Notice = styled.p``;
 
-	return <LoginPageContainer>컴포넌트 작성하기</LoginPageContainer>;
+const LoginPage: React.FC<LoginPageProps> = () => {
+	return (
+		<LoginPageContainer>
+			<Title>로그인하여 쇼핑을 시작하세요.</Title>
+			<Notice>이메일과 비밀번호를 입력하여 계정에 로그인하세요.</Notice>
+			<LoginForm />
+		</LoginPageContainer>
+	);
 };
 
 export default LoginPage;

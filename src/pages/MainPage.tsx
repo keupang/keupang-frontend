@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styled from '@emotion/styled';
 
 interface MainPageProps {}
@@ -15,10 +14,6 @@ const MainPageContainer = styled.div`
 `;
 
 const MainPage: React.FC<MainPageProps> = () => {
-	useEffect(() => {
-		console.log(`useEffect를 설정하세요`);
-	}, []);
-
 	return <MainPageContainer>컴포넌트 작성하기</MainPageContainer>;
 };
 

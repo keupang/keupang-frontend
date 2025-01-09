@@ -1,25 +1,16 @@
-import { useEffect } from 'react';
-import styled from '@emotion/styled';
+import Error from '../components/Error';
+import { HTTP_STATUS_CODE } from '../constants/apis';
+import { useNavigation } from '../hooks/useNavigation';
 
-interface NotFoundPageProps {}
+const NotFoundPage = () => {
+	const { goToHome } = useNavigation();
 
-// 스타일 정의
-const NotFoundPageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 16px;
-	background-color: ${({ theme }) => theme.colors.background};
-	color: ${({ theme }) => theme.colors.text};
-`;
-
-const NotFoundPage: React.FC<NotFoundPageProps> = () => {
-	useEffect(() => {
-		console.log(`useEffect를 설정하세요`);
-	}, []);
-
-	return <NotFoundPageContainer>컴포넌트 작성하기</NotFoundPageContainer>;
+	return (
+		<Error
+			errorCode={HTTP_STATUS_CODE.NOT_FOUND}
+			resetError={() => goToHome()}
+		/>
+	);
 };
 
 export default NotFoundPage;
