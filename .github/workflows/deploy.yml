@@ -1,9 +1,6 @@
 name: AWS 배포 자동화
 
 on:
-  push:
-    branches:
-      - prod
   pull_request:
     branches:
       - prod
