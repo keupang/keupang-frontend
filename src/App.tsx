@@ -28,9 +28,8 @@ const App = () => {
 	return (
 		<CustomThemeProvider>
 			<GlobalStyles />
-
-			<Router>
-				<GlobalErrorBoundary>
+			<GlobalErrorBoundary>
+				<Router>
 					<Header />
 					<StyledDiv>
 						<Routes>
@@ -45,8 +44,8 @@ const App = () => {
 							<Route path='*' element={<NotFoundPage />} /> {/* 404 페이지 */}
 						</Routes>
 					</StyledDiv>
-				</GlobalErrorBoundary>
-			</Router>
+				</Router>
+			</GlobalErrorBoundary>
 
 			<ToastContainer
 				position='top-right'
