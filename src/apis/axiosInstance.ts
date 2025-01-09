@@ -1,16 +1,23 @@
-import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { setAuthorizedRequest, handleAPIError } from './axiosInterceptors';
 import { BASE_URL, NETWORK_TIMEOUT } from '../constants/apis';
 import { toast } from 'react-toastify';
+import {
+	CustomAxiosRequestConfig,
+	CustomInternalAxiosRequestConfig,
+} from '@/types/types';
 
 export const axiosInstance = axios.create({
 	baseURL: BASE_URL,
 	timeout: NETWORK_TIMEOUT,
 	withCredentials: true,
 	authRequired: true,
-} as AxiosRequestConfig);
+} as CustomAxiosRequestConfig);
 
-axiosInstance.interceptors.request.use(setAuthorizedRequest, handleAPIError);
+axiosInstance.interceptors.request.use(
+	(config) => setAuthorizedRequest(config as CustomInternalAxiosRequestConfig),
+	handleAPIError
+);
 
 axiosInstance.interceptors.response.use(
 	(response) => response,
