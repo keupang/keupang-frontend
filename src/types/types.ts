@@ -4,7 +4,6 @@ export interface SuccessType<T> {
 	message: string;
 	content: {
 		detail: string;
-		help: string;
 	};
 	data: T;
 }
