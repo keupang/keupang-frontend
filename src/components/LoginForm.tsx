@@ -3,10 +3,13 @@ import { useForm } from 'react-hook-form';
 import { LoginFlex } from './styles/LoginForm.styled';
 import { Input } from '@/styles/commonStyles';
 import { Button } from './Button';
+import useAuthLoginMutation from '@/hooks/quries/useAuthLoginMutation';
+import { handleLoginSubmit } from '@/utils/handleLoginSubmit';
+import { useNavigation } from '@/hooks/useNavigation';
 
 export interface LoginFormProps {
-	email: string;
-	password: string;
+	userEmail: string;
+	userPassword: string;
 }
 
 const LoginFormContainer = styled.form`
@@ -20,10 +23,10 @@ const LoginFormContainer = styled.form`
 
 const LoginForm: React.FC = () => {
 	const { register, handleSubmit } = useForm<LoginFormProps>();
+	const { login, isLoginLoading } = useAuthLoginMutation();
+	const { goToHome } = useNavigation();
 
-	const onSubmit = (data: LoginFormProps) => {
-		console.log('Submitted data:', data);
-	};
+	const onSubmit = handleLoginSubmit(goToHome, login);
 
 	return (
 		<LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -31,17 +34,19 @@ const LoginForm: React.FC = () => {
 				<Input
 					type='text'
 					placeholder='이메일을 입력하세요.'
-					{...register('email', { required: '이메일 아이디를 입력해주세요.' })}
+					{...register('userEmail', {
+						required: '이메일 아이디를 입력해주세요.',
+					})}
 				/>
 				<Input
 					type='password'
 					placeholder='비밀번호를 입력해주세요.'
-					{...register('password', {
+					{...register('userPassword', {
 						required: '비밀번호를 입력해주세요.',
 					})}
 				/>
 				<Button variant='primary' size='large' withBorder={false} type='submit'>
-					로그인
+					{isLoginLoading ? '로그인 중...' : '로그인'}
 				</Button>
 			</LoginFlex>
 		</LoginFormContainer>
