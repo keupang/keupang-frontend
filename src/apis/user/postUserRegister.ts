@@ -1,5 +1,6 @@
 import { axiosInstance } from '../axiosInstance';
 import { END_POINTS } from '../../constants/apis';
+import { CustomAxiosRequestConfig } from '@/types/types';
 
 export interface RegisterUserData {
 	userEmail: string;
@@ -15,7 +16,7 @@ const postUserRegister = async (data: RegisterUserData) => {
 		{
 			params: { ...data },
 			authRequired: false,
-		}
+		} as CustomAxiosRequestConfig
 	);
 
 	return response.data;
