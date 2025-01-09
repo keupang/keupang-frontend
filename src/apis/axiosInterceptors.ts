@@ -7,8 +7,10 @@ import {
 	ACCESS_TOKEN,
 } from '../constants/apis';
 import { PATH } from '../constants/path';
-import type { AxiosError, InternalAxiosRequestConfig } from 'axios';
+import type { AxiosError } from 'axios';
 import { getNewToken } from './user/getNewToken';
+import { CustomInternalAxiosRequestConfig } from '@/types/types';
+import useAuth from '@/hooks/useAuth';
 
 export interface ErrorResponse {
 	status: number;
@@ -17,11 +19,13 @@ export interface ErrorResponse {
 	message?: string;
 }
 
-export const setAuthorizedRequest = (config: InternalAxiosRequestConfig) => {
+export const setAuthorizedRequest = (
+	config: CustomInternalAxiosRequestConfig
+) => {
 	if (!config.authRequired || !config.headers || config.headers.Authorization)
 		return config;
 
-	const accessToken = localStorage.getItem(ACCESS_TOKEN);
+	const { token: accessToken } = useAuth();
 
 	if (!accessToken) {
 		window.location.href = PATH.LOGIN;
@@ -34,7 +38,7 @@ export const setAuthorizedRequest = (config: InternalAxiosRequestConfig) => {
 };
 
 export const handleTokenError = async (error: AxiosError<ErrorResponse>) => {
-	const originalRequest = error.config;
+	const originalRequest = error.config as CustomInternalAxiosRequestConfig;
 
 	if (!error.response || !originalRequest)
 		throw new Error(
