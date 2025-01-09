@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { NAV_LINKS, CATEGORY_LINKS } from '../constants/navLinks';
 import Dropdown from './Dropdown';
-import { mediaQuery } from '../utils/utils';
+import { mediaQuery } from '../utils/mediaQuery';
 import { useDropdown } from '../hooks/useDropdown';
 import { useRef } from 'react';
 
