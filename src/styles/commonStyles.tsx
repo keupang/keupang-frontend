@@ -40,3 +40,5 @@ export const ErrorText = styled.p`
 export const Flex = styled.div`
 	display: flex;
 `;
+
+export const Text = styled.span``;
