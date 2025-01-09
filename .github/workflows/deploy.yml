@@ -1,9 +1,6 @@
 name: AWS 배포 자동화
 
 on:
-  push:
-    branches:
-      - prod
   pull_request:
     branches:
       - prod
@@ -28,7 +25,7 @@ jobs:
 
       - name: 프로젝트 빌드
         run: |
-          yarn build
+          VITE_NODE_ENV=production VITE_BASE_URL=${{ secrets.VITE_BASE_URL }} yarn build
 
       - name: 테스트 실행
         run: |

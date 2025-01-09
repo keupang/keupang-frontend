@@ -1,8 +1,4 @@
-import type {
-	InternalAxiosRequestConfig,
-	AxiosRequestConfig,
-	AxiosRequestHeaders,
-} from 'axios';
+import type { InternalAxiosRequestConfig, AxiosRequestConfig } from 'axios';
 
 export interface SuccessType<T> {
 	code: number;
@@ -14,12 +10,11 @@ export interface SuccessType<T> {
 	data: T;
 }
 
-export interface CustomInternalAxiosRequestConfig
-	extends InternalAxiosRequestConfig {
+export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
 	authRequired?: boolean;
-	headers: AxiosRequestHeaders;
 }
 
-export interface CustomAxiosRequestConfig extends AxiosRequestConfig {
+export interface CustomInternalAxiosRequestConfig
+	extends InternalAxiosRequestConfig {
 	authRequired?: boolean;
 }

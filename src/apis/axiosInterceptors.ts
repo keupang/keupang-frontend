@@ -8,7 +8,7 @@ import {
 } from '../constants/apis';
 import { PATH } from '../constants/path';
 import type { AxiosError } from 'axios';
-import { getNewToken } from './user/getNewToken';
+//import { getNewToken } from './user/getNewToken';
 import { CustomInternalAxiosRequestConfig } from '@/types/types';
 import useAuth from '@/hooks/useAuth';
 
@@ -22,7 +22,9 @@ export interface ErrorResponse {
 export const setAuthorizedRequest = (
 	config: CustomInternalAxiosRequestConfig
 ) => {
-	if (!config.authRequired || !config.headers || config.headers.Authorization)
+	const isAuthRequired = config.authRequired ?? true;
+
+	if (!isAuthRequired || !config.headers || config.headers.Authorization)
 		return config;
 
 	const { token: accessToken } = useAuth();
@@ -50,9 +52,9 @@ export const handleTokenError = async (error: AxiosError<ErrorResponse>) => {
 		status === HTTP_STATUS_CODE.UNAUTHORIZED &&
 		data.code === AUTH_ERROR_CODE.EXPIRED_ACCESS_TOKEN
 	) {
-		const { accessToken } = await getNewToken();
-		originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-		localStorage.setItem(ACCESS_TOKEN, accessToken);
+		//const { accessToken } = await getNewToken();
+		//originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+		//localStorage.setItem(ACCESS_TOKEN, accessToken);
 
 		return axiosInstance(originalRequest);
 	}
