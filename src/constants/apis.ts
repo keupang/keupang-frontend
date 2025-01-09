@@ -65,8 +65,6 @@ export const BASE_URL = PROD
 	? `${import.meta.env.VITE_BASE_URL}`
 	: 'http://localhost:5173';
 
-console.log(PROD, import.meta.env.VITE_BASE_URL);
-
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 
 export const END_POINTS = {
