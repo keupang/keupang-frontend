@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.svg';
-import { mediaQuery } from '../utils/utils';
+import { mediaQuery } from '../utils/mediaQuery';
 import { ActionButtons } from './ActionButtons';
 import { NavLinks } from './NavLinks';
 
