@@ -68,9 +68,10 @@ export const BASE_URL = PROD
 export const ACCESS_TOKEN = 'ACCESS_TOKEN';
 
 export const END_POINTS = {
-	LOGIN: 'auth/login',
-	NEWTOKEN: 'auth/refresh',
-	AUTHMAILSEND: 'auth/send-verification-email',
-	AUTHMAILVERIFICATION: 'auth/verify-email',
+	LOGIN: 'user/login',
+	NEWTOKEN: 'user/refresh',
+	AUTHMAILSEND: 'user/send-verification-email',
+	AUTHMAILVERIFICATION: 'user/verify-email',
 	AUTHREGISTER: 'user/register',
+	GETPRODUCTS: 'products',
 } as const;
