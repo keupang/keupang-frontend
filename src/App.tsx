@@ -17,6 +17,7 @@ import { CustomThemeProvider } from './contexts/ThemeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GlobalErrorBoundary from './components/GlobalErrorBoundary';
+import Footer from './components/Footer';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -44,6 +45,7 @@ const App = () => {
 							<Route path='*' element={<NotFoundPage />} /> {/* 404 페이지 */}
 						</Routes>
 					</StyledDiv>
+					<Footer />
 				</Router>
 			</GlobalErrorBoundary>
 

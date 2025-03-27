@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import SearchBar from '@/components/SearchBar';
+import ProfileCard from '@/components/ProfileCard';
 
 interface MainPageProps {}
 
@@ -14,7 +16,12 @@ const MainPageContainer = styled.div`
 `;
 
 const MainPage: React.FC<MainPageProps> = () => {
-	return <MainPageContainer>컴포넌트 작성하기</MainPageContainer>;
+	return (
+		<MainPageContainer>
+			<SearchBar />
+			<ProfileCard />
+		</MainPageContainer>
+	);
 };
 
 export default MainPage;

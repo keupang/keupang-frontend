@@ -6,12 +6,14 @@ export const useNavigation = () => {
 	const goToSignup = () => navigation('/signup');
 	const goToHome = () => navigation('/');
 	const goToLogin = () => navigation('/login');
+	const goToProducts = () => navigation('/products');
 
-	return { goToSignup, goToHome, goToLogin };
+	return { goToSignup, goToHome, goToLogin, goToProducts };
 };
 
 export type NavigationHookType = {
 	goToSignup: () => void;
 	goToHome: () => void;
 	goToLogin: () => void;
+	goToProducts: () => void;
 };

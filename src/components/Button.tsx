@@ -78,7 +78,6 @@ const StyledButton = styled.button<ButtonProps>`
 	}
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-		width: 80%;
 		padding: calc(${({ theme }) => theme.spacing.sm} * 0.5)
 			calc(
 				${({ theme, size }) =>
