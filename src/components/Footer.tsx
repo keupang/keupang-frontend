@@ -36,7 +36,7 @@ const FooterText = styled.p`
 	padding: 8px 0;
 	text-align: center;
 	font-size: 0.8rem;
-	color: ${({ theme }) => theme.colors.textSecondary};
+	color: ${({ theme }) => theme.colors.secondary};
 `;
 
 const Footer: React.FC<FooterProps> = () => {

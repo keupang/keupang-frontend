@@ -67,7 +67,7 @@ const SearchBar = () => {
 		try {
 			setQuery(input);
 
-			const response = await getProducts({ query: input, page: 1, size: 10 });
+			const response = await getProducts({ search: input, page: 1, size: 10 });
 			setResults(response.data.products);
 			console.log(response.data.products);
 
