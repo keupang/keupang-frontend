@@ -33,7 +33,10 @@ const DropdownContentContainer = styled.div`
 	z-index: 9999;
 	min-width: max-content;
 
-	a {
+	a,
+	button {
+		width: 100%;
+		box-sizing: border-box;
 		color: ${({ theme }) => theme.colors.text};
 		text-decoration: none;
 		display: block;
