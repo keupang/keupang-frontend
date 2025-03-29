@@ -16,7 +16,7 @@ const HeaderContainer = styled.header`
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 	border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
 
-	${mediaQuery('md')} {
+	${mediaQuery('1000px')} {
 		flex-direction: column;
 		padding: ${({ theme }) => theme.spacing.md};
 		gap: ${({ theme }) => theme.spacing.md};
