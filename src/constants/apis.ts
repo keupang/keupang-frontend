@@ -73,5 +73,5 @@ export const END_POINTS = {
 	AUTHMAILSEND: 'user/send-verification-email',
 	AUTHMAILVERIFICATION: 'user/verify-email',
 	AUTHREGISTER: 'user/register',
-	GETPRODUCTS: 'products',
+	GETPRODUCTS: 'product',
 } as const;
