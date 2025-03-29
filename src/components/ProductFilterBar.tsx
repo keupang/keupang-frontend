@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { searchFilter } from '@/constants/search';
 import useQueryParams from '@/hooks/useQueryParams';
 import { mediaQuery } from '@/utils/mediaQuery';
+import { useEffect } from 'react';
 
 interface ProductFilterBarProps {}
 
@@ -48,6 +49,12 @@ const FilterItem = styled.button<{ selected: boolean }>`
 const ProductFilterBar: React.FC<ProductFilterBarProps> = () => {
 	const { getQuery, setQuery } = useQueryParams();
 	const filterQuery = getQuery('filter') ?? '';
+
+	useEffect(() => {
+		if (!filterQuery) {
+			setQuery('filter', 'new');
+		}
+	}, [filterQuery, setQuery]);
 
 	return (
 		<ProductFilterBarContainer>
