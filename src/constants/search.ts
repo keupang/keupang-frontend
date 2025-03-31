@@ -1,10 +1,3 @@
-export const searchDefault = {
-	size: '20',
-	page: '0',
-	category: '',
-	search: '',
-};
-
 export const searchFilter = {
 	최신순: 'new',
 	판매량순: 'sales',
