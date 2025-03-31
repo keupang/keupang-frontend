@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import useSearchStore from '@/stores/searchStore';
-import { useNavigation } from '@/hooks/useNavigation';
+import { useEffect, useState } from 'react';
 import { Button } from './Button';
 import styled from '@emotion/styled';
 import { Input } from '@/styles/commonStyles';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { mediaQuery } from '@/utils/mediaQuery';
-import { getProducts } from '@/apis/products/getProducts';
+import { useNavigation } from '@/hooks/useNavigation';
+import useQueryParams from '@/hooks/useQueryParams';
 
 const SearchBarContainer = styled.div`
 	display: flex;
@@ -59,29 +58,24 @@ const SearchButton = styled(Button)`
 
 const SearchBar = () => {
 	const [input, setInput] = useState('');
-	const setQuery = useSearchStore((state) => state.setQuery);
-	const setResults = useSearchStore((state) => state.setResults);
-	const { goToProducts } = useNavigation();
-
-	const handleSearch = async () => {
-		try {
-			setQuery(input);
-
-			const response = await getProducts({ search: input, page: 1, size: 10 });
-			setResults(response.data.products);
-			console.log(response.data.products);
-
-			goToProducts();
-		} catch (error) {
-			console.error('Error fetching products:', error);
-		}
-	};
+	const { goToSearch } = useNavigation();
+	const { getQuery } = useQueryParams();
+	const search = getQuery('search');
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Enter') {
 			handleSearch();
 		}
 	};
+
+	const handleSearch = () => {
+		if (!input.trim()) return;
+		goToSearch(input.trim());
+	};
+
+	useEffect(() => {
+		setInput(search ?? '');
+	}, [search]);
 
 	return (
 		<SearchBarContainer>
@@ -102,8 +96,8 @@ const SearchBar = () => {
 				variant='primary'
 				size='small'
 				withBorder={false}
-				onClick={handleSearch}
-				type='submit'>
+				type='submit'
+				onClick={handleSearch}>
 				Search
 			</SearchButton>
 		</SearchBarContainer>
