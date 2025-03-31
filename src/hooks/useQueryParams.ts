@@ -1,6 +1,6 @@
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
-type QueryKey = 'filter' | 'category';
+type QueryKey = 'search' | 'category' | 'minPrice' | 'maxPrice' | 'sortBy';
 
 const useQueryParams = () => {
 	const [searchParams] = useSearchParams();
@@ -12,8 +12,9 @@ const useQueryParams = () => {
 		navigate({ search: newParams.toString() });
 	};
 
-	const getQuery = (key: QueryKey) => {
-		return searchParams.get(key);
+	const getQuery = (key: QueryKey): string | undefined => {
+		const value = searchParams.get(key);
+		return value === null ? undefined : value;
 	};
 
 	const setMultipleQueries = (updates: Partial<Record<QueryKey, string>>) => {
