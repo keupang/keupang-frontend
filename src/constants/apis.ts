@@ -71,7 +71,7 @@ export const HTTP_ERROR_MESSAGE: Record<number, ErrorMessage> & {
 	},
 };
 
-export const PROD = import.meta.env.VITE_NODE_ENV === 'development';
+export const PROD = import.meta.env.VITE_NODE_ENV === 'production';
 
 export const BASE_URL = PROD
 	? `${import.meta.env.VITE_BASE_URL}`
