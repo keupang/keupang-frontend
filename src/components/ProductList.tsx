@@ -185,7 +185,7 @@ export const ProductList = () => {
 			{products.map((item) => (
 				<ProductCard
 					key={`${item.product.id}-${item.stock.id}`}
-					onClick={() => goToProductDetail(item.product.id)}>
+					onClick={() => goToProductDetail(item.stock.id)}>
 					<ProductImage
 						src={item.product.imageUrl}
 						alt={item.product.name}
