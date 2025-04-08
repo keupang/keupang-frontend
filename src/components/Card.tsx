@@ -12,6 +12,7 @@ const CardContainer = styled.div<{ variant: 'default' | 'outlined' }>`
 	color: ${({ theme }) => theme.colors.text};
 	border: ${({ variant, theme }) =>
 		variant === 'outlined' ? `1px solid ${theme.colors.secondary}` : 'none'};
+
 	border-radius: 8px;
 	box-shadow: ${({ variant }) =>
 		variant === 'default' ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none'};
