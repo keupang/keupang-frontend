@@ -1,5 +1,5 @@
 import { Button } from './Button';
-import { HTTP_STATUS_CODE, HTTP_ERROR_MESSAGE } from '../constants/apis';
+import { HTTP_ERROR_MESSAGE } from '../constants/apis';
 import ErrorImg from '../assets/images/ErrorImg.png';
 import styled from '@emotion/styled';
 import { Theme } from '@emotion/react';
@@ -84,11 +84,9 @@ const Text = styled.p<{
 `;
 
 const Error = ({ errorCode, resetError }: ErrorProps) => {
+	const safeErrorCode = typeof errorCode === 'number' ? errorCode : 0;
 	const errorMessage =
-		errorCode === HTTP_STATUS_CODE.NOT_FOUND ||
-		errorCode === HTTP_STATUS_CODE.INTERNAL_SERVER_ERROR
-			? HTTP_ERROR_MESSAGE[errorCode]
-			: HTTP_ERROR_MESSAGE.DEFAULT;
+		HTTP_ERROR_MESSAGE[safeErrorCode] ?? HTTP_ERROR_MESSAGE.DEFAULT;
 
 	return (
 		<Flex gap='72' align='center' justify='center' height='70vh'>
@@ -107,7 +105,7 @@ const Error = ({ errorCode, resetError }: ErrorProps) => {
 						{errorMessage.BODY.secondLine}
 					</Text>
 					<Text size='lg' weight='medium' color='secondary'>
-						{errorMessage.BODY.thridLine}
+						{errorMessage.BODY.thirdLine}
 					</Text>
 				</Flex>
 				<Button variant='primary' size='medium' onClick={resetError}>
