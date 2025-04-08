@@ -66,7 +66,7 @@ const App = () => {
 							}
 						/>
 						<Route
-							path='/products/:id'
+							path='/product/:id'
 							element={
 								<GlobalErrorBoundary>
 									<ProductDetailPage />
