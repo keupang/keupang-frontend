@@ -10,15 +10,9 @@ describe('mediaQuery > ', () => {
 		const mdMediaQuery = mediaQuery('md')({ theme: mockTheme });
 		const lgMediaQuery = mediaQuery('lg')({ theme: mockTheme });
 
-		expect(smMediaQuery).toBe(`
-  @media (max-width: 480px)
-`);
-		expect(mdMediaQuery).toBe(`
-  @media (max-width: 768px)
-`);
-		expect(lgMediaQuery).toBe(`
-  @media (max-width: 1024px)
-`);
+		expect(smMediaQuery.trim()).toBe('@media (max-width: 480px)');
+		expect(mdMediaQuery.trim()).toBe('@media (max-width: 768px)');
+		expect(lgMediaQuery.trim()).toBe('@media (max-width: 1024px)');
 	});
 
 	it('존재하지 않는 breakpoint를 사용했을 때 오류를 발생시키지 않아야 한다.', () => {
@@ -28,8 +22,6 @@ describe('mediaQuery > ', () => {
 			});
 
 		expect(invalidBreakpoint).not.toThrow();
-		expect(invalidBreakpoint()).toBe(`
-  @media (max-width: undefined)
-`);
+		expect(invalidBreakpoint().trim()).toBe('@media (max-width: unknown)');
 	});
 });

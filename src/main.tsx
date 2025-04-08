@@ -1,4 +1,3 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { worker } from './mocks/browser';
@@ -22,12 +21,10 @@ async function prepare() {
 // 애플리케이션 초기화
 prepare().then(() => {
 	createRoot(document.getElementById('root')!).render(
-		<StrictMode>
-			<QueryClientProvider client={queryClient}>
-				<App />
-				<ReactQueryDevtools />
-			</QueryClientProvider>
-		</StrictMode>
+		<QueryClientProvider client={queryClient}>
+			<App />
+			<ReactQueryDevtools />
+		</QueryClientProvider>
 	);
 });
 

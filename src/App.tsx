@@ -17,6 +17,7 @@ import { CustomThemeProvider } from './contexts/ThemeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GlobalErrorBoundary from './components/GlobalErrorBoundary';
+import Footer from './components/Footer';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
@@ -28,24 +29,79 @@ const App = () => {
 	return (
 		<CustomThemeProvider>
 			<GlobalStyles />
-			<GlobalErrorBoundary>
-				<Router>
-					<Header />
-					<StyledDiv>
-						<Routes>
-							<Route path='/' element={<MainPage />} />
-							<Route path='/login' element={<LoginPage />} />
-							<Route path='/signup' element={<SignupPage />} />
-							<Route path='/products' element={<ProductListPage />} />
-							<Route path='/products/:id' element={<ProductDetailPage />} />
-							<Route path='/cart' element={<CartPage />} />
-							<Route path='/orders' element={<OrderHistoryPage />} />
-							<Route path='/mypage' element={<MyPage />} />
-							<Route path='*' element={<NotFoundPage />} /> {/* 404 페이지 */}
-						</Routes>
-					</StyledDiv>
-				</Router>
-			</GlobalErrorBoundary>
+			<Router>
+				<Header />
+				<StyledDiv>
+					<Routes>
+						<Route
+							path='/'
+							element={
+								<GlobalErrorBoundary>
+									<MainPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/login'
+							element={
+								<GlobalErrorBoundary>
+									<LoginPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/signup'
+							element={
+								<GlobalErrorBoundary>
+									<SignupPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/products'
+							element={
+								<GlobalErrorBoundary>
+									<ProductListPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/product/:id'
+							element={
+								<GlobalErrorBoundary>
+									<ProductDetailPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/cart'
+							element={
+								<GlobalErrorBoundary>
+									<CartPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/orders'
+							element={
+								<GlobalErrorBoundary>
+									<OrderHistoryPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route
+							path='/mypage'
+							element={
+								<GlobalErrorBoundary>
+									<MyPage />
+								</GlobalErrorBoundary>
+							}
+						/>
+						<Route path='*' element={<NotFoundPage />} />
+					</Routes>
+				</StyledDiv>
+				<Footer />
+			</Router>
 
 			<ToastContainer
 				position='top-right'

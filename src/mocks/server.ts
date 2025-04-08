@@ -1,5 +1,5 @@
 // src/mocks/server.ts
 import { setupServer } from 'msw/node';
-import { handler } from './handler';
+import { handlers } from './handler';
 
-export const server = setupServer(...handler);
+export const server = setupServer(...handlers);
