@@ -6,7 +6,7 @@ export const useInfiniteScroll = ({
 	isLoading,
 	onIntersect,
 }: {
-	ref: React.RefObject<HTMLElement>;
+	ref: React.RefObject<HTMLDivElement | null>;
 	canLoadMore: boolean;
 	isLoading: boolean;
 	onIntersect: () => void;

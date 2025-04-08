@@ -28,7 +28,7 @@ describe('버튼 컴포넌트 테스트 > ', () => {
 
 		// Danger 스타일 확인
 		const button = screen.getByRole('button', { name: '위험 버튼' });
-		expect(button).toHaveStyle(`background-color: #cc3333`);
+		expect(button).toHaveStyle(`background-color: ${lightTheme.colors.danger}`);
 	});
 
 	it('size 속성에 따라 올바른 크기가 적용된다', () => {
