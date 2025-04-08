@@ -8,8 +8,9 @@ const ProfileContainer = styled.div`
 	justify-content: center;
 	width: 70%;
 `;
-
 const ProfileCard = styled.div`
+	perspective: 1000px;
+
 	border: 1px solid ${({ theme }) => theme.colors.secondary};
 	border-radius: 8px;
 	padding: ${({ theme }) => theme.spacing.lg};
@@ -17,6 +18,16 @@ const ProfileCard = styled.div`
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 	line-height: ${({ theme }) => theme.spacing.lg};
 	flex: 1;
+
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+	transform-style: preserve-3d;
+
+	&:hover {
+		transform: rotateY(6deg) rotateX(3deg) scale(1.03);
+		box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+	}
 `;
 
 const ProfileImage = styled.img`
