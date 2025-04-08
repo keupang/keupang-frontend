@@ -48,11 +48,11 @@ const FilterItem = styled.button<{ selected: boolean }>`
 
 const ProductFilterBar: React.FC<ProductFilterBarProps> = () => {
 	const { getQuery, setQuery } = useQueryParams();
-	const filterQuery = getQuery('filter') ?? '';
+	const filterQuery = getQuery('sortBy') ?? '';
 
 	useEffect(() => {
 		if (!filterQuery) {
-			setQuery('filter', 'new');
+			setQuery('sortBy', 'new');
 		}
 	}, [filterQuery, setQuery]);
 
@@ -61,7 +61,7 @@ const ProductFilterBar: React.FC<ProductFilterBarProps> = () => {
 			{Object.entries(searchFilter).map(([label, value]) => (
 				<FilterItem
 					key={label}
-					onClick={() => setQuery('filter', value)}
+					onClick={() => setQuery('sortBy', value)}
 					selected={filterQuery === value}>
 					{label}
 				</FilterItem>
