@@ -1,7 +1,7 @@
-import { useState, useEffect, RefObject } from 'react';
+import { useState, useEffect } from 'react';
 
 export const useInputOffset = (
-	inputRef: RefObject<HTMLElement>,
+	inputRef: React.RefObject<HTMLElement | null>,
 	dependency: boolean
 ) => {
 	const [leftOffset, setLeftOffset] = useState(0);

@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import styled from '@emotion/styled';
 import { useParams } from 'react-router-dom';
 import { useProductDetail } from '@/hooks/products/useProductDetail';
-import { mediaQuery } from '@/utils/mediaQuery';
 import SearchBar from '@/components/SearchBar';
 import { Button } from '@/components/Button';
 import { toast } from 'react-toastify';

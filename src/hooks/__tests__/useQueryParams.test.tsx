@@ -14,7 +14,7 @@ vi.mock('react-router-dom', async (importOriginal) => {
 });
 
 const wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-	<MemoryRouter initialEntries={['/test?filter=electronics']}>
+	<MemoryRouter initialEntries={['/test?sortBy=electronics']}>
 		<Routes>
 			<Route path='/test' element={children} />
 		</Routes>
@@ -28,7 +28,7 @@ beforeEach(() => {
 describe('useQueryParams > ', () => {
 	it('getQuery는 쿼리 문자열에서 원하는 값을 읽을 수 있어야 한다', () => {
 		const { result } = renderHook(() => useQueryParams(), { wrapper });
-		expect(result.current.getQuery('filter')).toBe('electronics');
+		expect(result.current.getQuery('sortBy')).toBe('electronics');
 	});
 
 	it('setQuery는 쿼리 파라미터를 하나 추가하거나 수정할 수 있어야 한다', () => {
@@ -37,17 +37,17 @@ describe('useQueryParams > ', () => {
 		result.current.setQuery('category', 'fashion');
 
 		expect(mockNavigate).toHaveBeenCalledWith({
-			search: 'filter=electronics&category=fashion',
+			search: 'sortBy=electronics&category=fashion',
 		});
 	});
 
 	it('setMultipleQueries는 여러 쿼리 파라미터를 한 번에 설정할 수 있어야 한다', () => {
 		const { result } = renderHook(() => useQueryParams(), { wrapper });
 
-		result.current.setMultipleQueries({ filter: 'daily', category: '의류' });
+		result.current.setMultipleQueries({ sortBy: 'daily', category: '의류' });
 
 		expect(mockNavigate).toHaveBeenCalledWith({
-			search: 'filter=daily&category=%EC%9D%98%EB%A5%98',
+			search: 'sortBy=daily&category=%EC%9D%98%EB%A5%98',
 		});
 	});
 

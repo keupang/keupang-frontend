@@ -60,9 +60,7 @@ const SignupForm: React.FC = () => {
 	const customEmailDomain = watch('customEmailDomain');
 	const code = watch('emailVerification');
 
-	const emailInputRef = useRef<null | HTMLInputElement>(
-		null
-	) as React.MutableRefObject<HTMLInputElement | null>;
+	const emailInputRef = useRef<HTMLInputElement>(null);
 
 	const passwordVisibility = useOverlay();
 	const confirmPasswordVisibility = useOverlay();

@@ -54,8 +54,8 @@ export const NavLinks = () => {
 		closeDropdown: closeCategory,
 	} = useDropdown();
 
-	const categoryRef = useRef<HTMLDivElement>(null);
-	const myPageRef = useRef<HTMLDivElement>(null);
+	const categoryRef = useRef<HTMLDivElement>(null!);
+	const myPageRef = useRef<HTMLDivElement>(null!);
 	const {
 		isOpen: isMyPageOpen,
 		position: myPagePosition,
