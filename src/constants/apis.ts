@@ -71,7 +71,7 @@ export const HTTP_ERROR_MESSAGE: Record<number, ErrorMessage> & {
 	},
 };
 
-export const PROD = import.meta.env.VITE_NODE_ENV === 'production';
+export const PROD = import.meta.env.VITE_NODE_ENV === 'development';
 
 export const BASE_URL = PROD
 	? `${import.meta.env.VITE_BASE_URL}`
@@ -86,4 +86,5 @@ export const END_POINTS = {
 	AUTHMAILVERIFICATION: 'user/verify-email',
 	AUTHREGISTER: 'user/register',
 	GETSTOCK: 'stock',
+	GET_DETAIL_PRODUCT: (productId: number | string) => `stock/${productId}`,
 } as const;
