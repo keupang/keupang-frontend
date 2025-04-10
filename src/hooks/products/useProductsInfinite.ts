@@ -18,6 +18,7 @@ export const useProductsInfinite = () => {
 	const [hasNextPage, setHasNextPage] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
 	const [query, setQuery] = useState<ProductQueryParams>({});
+	const initialSize = estimateInitialSize();
 
 	const loadProducts = useCallback(
 		async (pageNum: number, newQuery?: ProductQueryParams) => {
@@ -29,7 +30,7 @@ export const useProductsInfinite = () => {
 
 				const res = await getProducts({
 					page: pageNum,
-					size: pageNum === 0 ? estimateInitialSize() : 10,
+					size: pageNum === 0 ? initialSize : 10,
 					search: mergedQuery.search ?? ' ',
 					category: mergedQuery.category ?? undefined,
 					minPrice: mergedQuery.minPrice,
@@ -65,5 +66,6 @@ export const useProductsInfinite = () => {
 		setPage,
 		loadProducts,
 		reset,
+		initialSize,
 	};
 };

@@ -118,6 +118,7 @@ export const ProductList = () => {
 		setPage,
 		loadProducts,
 		reset,
+		initialSize,
 	} = useProductsInfinite();
 	const observerRef = useRef<HTMLDivElement>(null);
 	const { goToCategory, goToProductDetail } = useNavigation();
@@ -182,14 +183,14 @@ export const ProductList = () => {
 
 	return (
 		<ProductListContainer>
-			{products.map((item) => (
+			{products.map((item, idx) => (
 				<ProductCard
 					key={`${item.product.id}-${item.stock.id}`}
 					onClick={() => goToProductDetail(item.stock.id)}>
 					<ProductImage
 						src={item.product.imageUrl}
 						alt={item.product.name}
-						loading='lazy'
+						loading={idx < initialSize ? 'eager' : 'lazy'}
 					/>
 					<ProductTitle>{item.product.name}</ProductTitle>
 
