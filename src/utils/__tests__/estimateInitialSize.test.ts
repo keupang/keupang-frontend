@@ -42,11 +42,11 @@ describe('estimateInitialSize', () => {
 		expect(estimateInitialSize()).toBe(20);
 	});
 
-	it('작은 화면에 맞게 계산된다', () => {
+	it('최소 렌더링 아이템 개수는 6개이다', () => {
 		window.innerHeight = 600;
 		window.innerWidth = 375;
 		// rows = ceil(600 / 316) = 2
 		// columns = floor(375 / 220) = 1
-		expect(estimateInitialSize()).toBe(2);
+		expect(estimateInitialSize()).toBe(6);
 	});
 });
