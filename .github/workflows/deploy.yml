@@ -44,7 +44,9 @@ jobs:
 
       - name: CloudFront 캐시 무효화
         run: |
-          aws cloudfront create-invalidation --distribution-id E3SKL51LT8O5KG --paths "/*"
+          aws cloudfront create-invalidation \
+            --distribution-id E3SKL51LT8O5KG \
+            --paths "/*"
 
       - name: Slack 알림 (성공)
         if: success()
