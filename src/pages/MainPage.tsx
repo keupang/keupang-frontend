@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import SearchBar from '@/components/SearchBar';
 import ProfileCard from '@/components/ProfileCard';
+import SeoHelmet from '@/components/SeoHelmet';
 
 interface MainPageProps {}
 
@@ -17,10 +18,18 @@ const MainPageContainer = styled.div`
 
 const MainPage: React.FC<MainPageProps> = () => {
 	return (
-		<MainPageContainer>
-			<SearchBar />
-			<ProfileCard />
-		</MainPageContainer>
+		<>
+			<SeoHelmet
+				title='규팡 - 상품 검색 플랫폼'
+				description='카테고리, 키워드, 가격 조건으로 인기 상품을 손쉽게 찾아보세요.'
+				url='https://keupang.store/'
+				image='https://keupang.store/og-image.jpg'
+			/>
+			<MainPageContainer>
+				<SearchBar />
+				<ProfileCard />
+			</MainPageContainer>
+		</>
 	);
 };
 
