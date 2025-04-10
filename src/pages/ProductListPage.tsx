@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { ProductList } from '@/components/ProductList';
 import ProductFilterBar from '@/components/ProductFilterBar';
 import SearchBar from '@/components/SearchBar';
+import { Helmet } from 'react-helmet-async';
 
 interface ProductListPageProps {}
 
@@ -18,11 +19,20 @@ const ProductListPageContainer = styled.div`
 
 const ProductListPage: React.FC<ProductListPageProps> = () => {
 	return (
-		<ProductListPageContainer>
-			<ProductFilterBar />
-			<SearchBar />
-			<ProductList />
-		</ProductListPageContainer>
+		<>
+			<Helmet>
+				<title>상품 목록 | 규팡</title>
+				<meta
+					name='description'
+					content='규팡에서 상품을 카테고리, 키워드로 검색해보세요.'
+				/>
+			</Helmet>
+			<ProductListPageContainer>
+				<ProductFilterBar />
+				<SearchBar />
+				<ProductList />
+			</ProductListPageContainer>
+		</>
 	);
 };
 

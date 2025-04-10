@@ -4,6 +4,7 @@ import { worker } from './mocks/browser';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './apis/queryClient';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { HelmetProvider } from 'react-helmet-async';
 
 // MSW 초기화 함수
 async function prepare() {
@@ -22,7 +23,9 @@ async function prepare() {
 prepare().then(() => {
 	createRoot(document.getElementById('root')!).render(
 		<QueryClientProvider client={queryClient}>
-			<App />
+			<HelmetProvider>
+				<App />
+			</HelmetProvider>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
 	);

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import SearchBar from '@/components/SearchBar';
 import ProfileCard from '@/components/ProfileCard';
+import { Helmet } from 'react-helmet-async';
 
 interface MainPageProps {}
 
@@ -17,10 +18,19 @@ const MainPageContainer = styled.div`
 
 const MainPage: React.FC<MainPageProps> = () => {
 	return (
-		<MainPageContainer>
-			<SearchBar />
-			<ProfileCard />
-		</MainPageContainer>
+		<>
+			<Helmet>
+				<title>규팡 - 쿠팡 클론코딩 프로젝트</title>
+				<meta
+					name='description'
+					content='규팡에서 상품을 카테고리, 키워드로 검색해보세요.'
+				/>
+			</Helmet>
+			<MainPageContainer>
+				<SearchBar />
+				<ProfileCard />
+			</MainPageContainer>
+		</>
 	);
 };
 
