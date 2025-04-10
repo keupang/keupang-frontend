@@ -5,6 +5,7 @@ import Dropdown from './Dropdown';
 import { mediaQuery } from '../utils/mediaQuery';
 import { useDropdown } from '../hooks/useDropdown';
 import { useRef } from 'react';
+import { useNavigation } from '@/hooks/useNavigation';
 
 const StyledNav = styled.nav`
 	display: flex;
@@ -41,6 +42,10 @@ const StyledNav = styled.nav`
 	}
 `;
 
+const CategoryBtn = styled.button`
+	cursor: pointer;
+`;
+
 export const NavLinks = () => {
 	const {
 		isOpen: isCategoryOpen,
@@ -49,14 +54,16 @@ export const NavLinks = () => {
 		closeDropdown: closeCategory,
 	} = useDropdown();
 
-	const categoryRef = useRef<HTMLDivElement>(null);
-	const myPageRef = useRef<HTMLDivElement>(null);
+	const categoryRef = useRef<HTMLDivElement>(null!);
+	const myPageRef = useRef<HTMLDivElement>(null!);
 	const {
 		isOpen: isMyPageOpen,
 		position: myPagePosition,
 		openDropdown: openMyPage,
 		closeDropdown: closeMyPage,
 	} = useDropdown();
+	const { goToCategory } = useNavigation();
+
 	return (
 		<StyledNav>
 			{NAV_LINKS.map((link) => (
@@ -74,9 +81,11 @@ export const NavLinks = () => {
 				openDropdown={() => openCategory(categoryRef)}
 				closeDropdown={closeCategory}>
 				{CATEGORY_LINKS.map((category) => (
-					<Link key={category.path} to={category.path}>
+					<CategoryBtn
+						key={category.path}
+						onClick={() => goToCategory(category.path)}>
 						{category.label}
-					</Link>
+					</CategoryBtn>
 				))}
 			</Dropdown>
 

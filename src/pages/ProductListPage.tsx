@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { ProductList } from '@/components/ProductList';
+import ProductFilterBar from '@/components/ProductFilterBar';
+import SearchBar from '@/components/SearchBar';
 
 interface ProductListPageProps {}
 
@@ -15,11 +17,13 @@ const ProductListPageContainer = styled.div`
 `;
 
 const ProductListPage: React.FC<ProductListPageProps> = () => {
-	useEffect(() => {
-		console.log(`useEffect를 설정하세요`);
-	}, []);
-
-	return <ProductListPageContainer>컴포넌트 작성하기</ProductListPageContainer>;
+	return (
+		<ProductListPageContainer>
+			<ProductFilterBar />
+			<SearchBar />
+			<ProductList />
+		</ProductListPageContainer>
+	);
 };
 
 export default ProductListPage;

@@ -30,9 +30,8 @@ describe('Card 컴포넌트', () => {
 		);
 
 		const cardContainer = screen.getByTestId('card-container');
-		const computedStyle = window.getComputedStyle(cardContainer);
-		expect(computedStyle.border).toBe(
-			`1px solid ${lightTheme.colors.secondary}`
+		expect(cardContainer).toHaveStyle(
+			`border: 1px solid ${lightTheme.colors.secondary}`
 		);
 	});
 
