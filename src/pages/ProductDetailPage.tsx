@@ -21,7 +21,7 @@ import {
 	DetailImage,
 	QuantityInput,
 } from './ProductDetailPage.styles';
-import { Helmet } from 'react-helmet-async';
+import SeoHelmet from '@/components/SeoHelmet';
 
 const ProductDetailPage = () => {
 	const { id } = useParams();
@@ -57,13 +57,12 @@ const ProductDetailPage = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>{stock.productName} | 규팡</title>
-				<meta
-					name='description'
-					content={`${stock.productName} 상품 상세정보. 가격: ${stock.price.toLocaleString()}원`}
-				/>
-			</Helmet>
+			<SeoHelmet
+				title={`${stock.productName} | 규팡`}
+				description={`${stock.productName} 상품 상세정보. 가격: ${stock.price.toLocaleString()}원`}
+				url={`https://keupang.store/product/${stock.productId}`}
+				image={stock.productImage}
+			/>
 			<ProductDetailPageContainer>
 				<SearchBar />
 				<ProductTopSection>
