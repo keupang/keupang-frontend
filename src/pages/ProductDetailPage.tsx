@@ -21,6 +21,7 @@ import {
 	DetailImage,
 	QuantityInput,
 } from './ProductDetailPage.styles';
+import SeoHelmet from '@/components/SeoHelmet';
 
 const ProductDetailPage = () => {
 	const { id } = useParams();
@@ -55,56 +56,67 @@ const ProductDetailPage = () => {
 	};
 
 	return (
-		<ProductDetailPageContainer>
-			<SearchBar />
-			<ProductTopSection>
-				<ThumbnailList>
-					{stock.detailImages.slice(0, 5).map((src, idx) => (
-						<Thumbnail
-							key={idx}
-							src={src}
-							alt={`썸네일 ${idx + 1}`}
-							onClick={() => setSelectedImage(src)} // 클릭 시 메인 이미지 변경
-						/>
-					))}
-				</ThumbnailList>
+		<>
+			<SeoHelmet
+				title={`${stock.productName} | 규팡`}
+				description={`${stock.productName} 상품 상세정보. 가격: ${stock.price.toLocaleString()}원`}
+				url={`https://keupang.store/product/${stock.productId}`}
+				image={stock.productImage}
+			/>
+			<ProductDetailPageContainer>
+				<SearchBar />
+				<ProductTopSection>
+					<ThumbnailList>
+						{stock.detailImages.slice(0, 5).map((src, idx) => (
+							<Thumbnail
+								key={idx}
+								src={src}
+								alt={`썸네일 ${idx + 1}`}
+								onClick={() => setSelectedImage(src)}
+							/>
+						))}
+					</ThumbnailList>
 
-				<MainImage
-					src={selectedImage || stock.productImage} // 선택 이미지가 있으면 사용
-					alt={stock.productName}
-				/>
-				<ProductInfo>
-					<ProductTitle>{stock.productName}</ProductTitle>
-					<hr />
-					<ProductPrice>{stock.price.toLocaleString()}원</ProductPrice>
-					<ProductCategory>카테고리: {stock.category}</ProductCategory>
-					<div>남은 수량: {stock.quantity}개</div>
-					<ActionButtons>
-						<QuantityInput
-							type='number'
-							min={MIN_QUANTITY}
-							max={MAX_QUANTITY}
-							value={quantity}
-							onChange={handleQuantityChange}
-							onBlur={handleQuantityBlur}
-						/>
-						<Button size='medium' variant='primary' onClick={handleAddToCart}>
-							장바구니
-						</Button>
-						<Button size='medium' variant='secondary' onClick={handlePurchase}>
-							구매하기
-						</Button>
-					</ActionButtons>
-				</ProductInfo>
-			</ProductTopSection>
-			<hr />
-			<br />
-			<DetailImageSection>
-				{stock.detailImages.map((src, idx) => (
-					<DetailImage key={idx} src={src} alt={`상세 이미지 ${idx + 1}`} />
-				))}
-			</DetailImageSection>
-		</ProductDetailPageContainer>
+					<MainImage
+						src={selectedImage || stock.productImage}
+						alt={stock.productName}
+					/>
+					<ProductInfo>
+						<ProductTitle>{stock.productName}</ProductTitle>
+						<hr />
+						<ProductPrice>{stock.price.toLocaleString()}원</ProductPrice>
+						<ProductCategory>카테고리: {stock.category}</ProductCategory>
+						<div>남은 수량: {stock.quantity}개</div>
+						<ActionButtons>
+							<QuantityInput
+								type='number'
+								min={MIN_QUANTITY}
+								max={MAX_QUANTITY}
+								value={quantity}
+								onChange={handleQuantityChange}
+								onBlur={handleQuantityBlur}
+							/>
+							<Button size='medium' variant='primary' onClick={handleAddToCart}>
+								장바구니
+							</Button>
+							<Button
+								size='medium'
+								variant='secondary'
+								onClick={handlePurchase}>
+								구매하기
+							</Button>
+						</ActionButtons>
+					</ProductInfo>
+				</ProductTopSection>
+				<hr />
+				<br />
+				<DetailImageSection>
+					{stock.detailImages.map((src, idx) => (
+						<DetailImage key={idx} src={src} alt={`상세 이미지 ${idx + 1}`} />
+					))}
+				</DetailImageSection>
+			</ProductDetailPageContainer>
+		</>
 	);
 };
 
