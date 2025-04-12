@@ -1,5 +1,5 @@
 import { axiosInstance } from '../axiosInstance';
-import { END_POINTS } from '../../constants/api/apis';
+import { END_POINTS } from '@/constants/api/apis';
 import { CustomAxiosRequestConfig } from '@/types/types';
 
 export interface ProductDetailResponse {
