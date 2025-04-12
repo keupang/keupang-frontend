@@ -103,8 +103,10 @@ export const ProductList = () => {
 						src={item.product.imageUrl}
 						alt={item.product.name}
 						loading={idx < initialSize ? 'eager' : 'lazy'}
-						fetchPriority={idx < initialSize ? 'high' : 'auto'}
 						decoding={idx >= initialSize ? 'async' : 'auto'}
+						{...(idx < initialSize
+							? { fetchpriority: 'high' }
+							: { fetchpriority: 'auto' })}
 					/>
 					<ProductTitle>{item.product.name}</ProductTitle>
 
