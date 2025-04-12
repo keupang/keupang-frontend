@@ -1,6 +1,6 @@
 import { StyledButton } from './Button.styles';
 
-interface ButtonProps {
+export interface ButtonProps {
 	variant?: 'primary' | 'secondary' | 'danger';
 	size?: 'small' | 'medium' | 'large';
 	type?: 'button' | 'submit' | 'reset';
