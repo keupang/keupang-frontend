@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"types": ["node", "@emotion/react"],
+		"types": ["node"],
 		"typeRoots": ["./src/types", "./node_modules/@types"],
 		"composite": true,
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
