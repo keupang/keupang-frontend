@@ -10,7 +10,7 @@ import { PATH } from '../constants/navigation/path';
 import type { AxiosError } from 'axios';
 //import { getNewToken } from './user/getNewToken';
 import { CustomInternalAxiosRequestConfig } from '@/types/types';
-import useAuth from '@/hooks/useAuth';
+import useAuth from '../hooks/auth/useAuth';
 
 export interface ErrorResponse {
 	status: number;

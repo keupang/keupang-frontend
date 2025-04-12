@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import EmptyImage from '@/assets/images/ErrorImg.png';
 import { Theme } from '@emotion/react';
-import { mediaQuery } from '@/utils/mediaQuery';
+import { mediaQuery } from '../../utils/dom/mediaQuery';
 
 interface EmptyProps {
 	title?: string;

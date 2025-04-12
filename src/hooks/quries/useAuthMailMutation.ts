@@ -1,7 +1,7 @@
 import { useErrorBoundary } from 'react-error-boundary';
 import postAuthMail from '@/apis/user/postAuthEmail';
 import postAuthEmailCode from '@/apis/user/postAuthEmailCode';
-import { useMutation } from '../useMutation';
+import { useMutation } from '../auth/useMutation';
 import { HTTPError } from '@apis/HTTPError';
 import { toast } from 'react-toastify';
 

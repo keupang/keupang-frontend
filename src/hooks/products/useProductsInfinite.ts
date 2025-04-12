@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { getProducts, StockWithProduct } from '@/apis/products/getProducts';
-import estimateInitialSize from '@/utils/estimateInitialSize';
+import estimateInitialSize from '../../utils/lcp/estimateInitialSize';
 import { useErrorBoundary } from 'react-error-boundary';
 
 export interface ProductQueryParams {

@@ -3,7 +3,7 @@ import { Button } from '../common/Button';
 import styled from '@emotion/styled';
 import { Input } from '@/styles/commonStyles';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { mediaQuery } from '@/utils/mediaQuery';
+import { mediaQuery } from '../../utils/dom/mediaQuery';
 import { useNavigation } from '@/hooks/useNavigation';
 import useQueryParams from '@/hooks/useQueryParams';
 

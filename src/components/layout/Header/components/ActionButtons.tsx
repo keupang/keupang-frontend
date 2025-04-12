@@ -1,9 +1,9 @@
 import { Button } from '../../../common/Button';
 import { useTheme } from '../../../../contexts/theme/ThemeContext';
-import { mediaQuery } from '../../../../utils/mediaQuery';
+import { mediaQuery } from '../../../../utils/dom/mediaQuery';
 import styled from '@emotion/styled';
 import { useNavigation } from '../../../../hooks/useNavigation';
-import useAuth from '@/hooks/useAuth';
+import useAuth from '../../../../hooks/auth/useAuth';
 import { Text } from '@/styles/commonStyles';
 
 const ActionButtonsContainer = styled.div`

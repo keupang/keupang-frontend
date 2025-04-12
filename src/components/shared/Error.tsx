@@ -3,7 +3,7 @@ import { HTTP_ERROR_MESSAGE } from '../../constants/api/apis';
 import ErrorImg from '@/assets/images/ErrorImg.png';
 import styled from '@emotion/styled';
 import { Theme } from '@emotion/react';
-import { mediaQuery } from '@/utils/mediaQuery';
+import { mediaQuery } from '../../utils/dom/mediaQuery';
 
 interface ErrorProps {
 	errorCode: number;

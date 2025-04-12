@@ -5,7 +5,7 @@ import {
 	CATEGORY_LINKS,
 } from '../../../../constants/navigation/navLinks';
 import Dropdown from './Dropdown';
-import { mediaQuery } from '@/utils/mediaQuery';
+import { mediaQuery } from '../../../../utils/dom/mediaQuery';
 import { useDropdown } from '@/hooks/useDropdown';
 import { useRef } from 'react';
 import { useNavigation } from '@/hooks/useNavigation';

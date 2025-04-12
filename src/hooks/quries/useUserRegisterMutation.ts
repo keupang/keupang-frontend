@@ -2,7 +2,7 @@ import { useErrorBoundary } from 'react-error-boundary';
 import postUserRegister, {
 	RegisterUserData,
 } from '@/apis/user/postUserRegister';
-import { useMutation } from '../useMutation';
+import { useMutation } from '../auth/useMutation';
 import { HTTPError } from '@/apis/HTTPError';
 import { toast } from 'react-toastify';
 import { SuccessType } from '@/types/types';
