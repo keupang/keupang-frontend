@@ -5,12 +5,12 @@ import {
 	HTTP_STATUS_CODE,
 	AUTH_ERROR_CODE,
 	ACCESS_TOKEN,
-} from '../constants/api/apis';
-import { PATH } from '../constants/navigation/path';
+} from '@/constants/api/apis';
+import { PATH } from '@/constants/navigation/path';
 import type { AxiosError } from 'axios';
 //import { getNewToken } from './user/getNewToken';
 import { CustomInternalAxiosRequestConfig } from '@/types/types';
-import useAuth from '../hooks/auth/useAuth';
+import useAuth from '@/hooks/auth/useAuth';
 
 export interface ErrorResponse {
 	status: number;

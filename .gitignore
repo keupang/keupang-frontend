@@ -27,5 +27,4 @@ dist-ssr
 *.sw?
 
 # Ignore TypeScript declaration files
-*.d.ts
 *.d.ts.map
