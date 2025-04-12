@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import GlobalStyles from './styles/GlobalStyles';
-import Header from './components/Header';
+import Header from './components/layout/Header/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
 	MainPage,
@@ -13,11 +13,11 @@ import {
 	MyPage,
 	NotFoundPage,
 } from './pages';
-import { CustomThemeProvider } from './contexts/ThemeContext';
+import { CustomThemeProvider } from './contexts/theme/ThemeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import GlobalErrorBoundary from './components/GlobalErrorBoundary';
-import Footer from './components/Footer';
+import GlobalErrorBoundary from './components/layout/GlobalErrorBoundary/GlobalErrorBoundary';
+import Footer from './components/layout/Footer/Footer';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};
