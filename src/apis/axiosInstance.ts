@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { setAuthorizedRequest, handleAPIError } from './axiosInterceptors';
-import { BASE_URL, NETWORK_TIMEOUT } from '../constants/api/apis';
+import { BASE_URL, NETWORK_TIMEOUT } from '@/constants/api/apis';
 import { toast } from 'react-toastify';
 import {
 	CustomAxiosRequestConfig,
