@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"types": ["node"],
-		"typeRoots": ["./src/types", "./node_modules/@types"],
 		"composite": true,
 		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 		"target": "ES2020",
@@ -43,5 +42,5 @@
 		/* Required for composite projects */
 		"declaration": true
 	},
-	"include": ["src", "src/types/emotion.d.ts"]
+	"include": ["src"]
 }
