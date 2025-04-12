@@ -1,8 +1,8 @@
-import { Button } from '../../common/Button';
-import { useTheme } from '../../../contexts/ThemeContext';
-import { mediaQuery } from '../../../utils/mediaQuery';
+import { Button } from '../../../common/Button';
+import { useTheme } from '../../../../contexts/theme/ThemeContext';
+import { mediaQuery } from '../../../../utils/mediaQuery';
 import styled from '@emotion/styled';
-import { useNavigation } from '../../../hooks/useNavigation';
+import { useNavigation } from '../../../../hooks/useNavigation';
 import useAuth from '@/hooks/useAuth';
 import { Text } from '@/styles/commonStyles';
 

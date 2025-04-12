@@ -5,8 +5,8 @@ import {
 	HTTP_STATUS_CODE,
 	AUTH_ERROR_CODE,
 	ACCESS_TOKEN,
-} from '../constants/apis';
-import { PATH } from '../constants/path';
+} from '../constants/api/apis';
+import { PATH } from '../constants/navigation/path';
 import type { AxiosError } from 'axios';
 //import { getNewToken } from './user/getNewToken';
 import { CustomInternalAxiosRequestConfig } from '@/types/types';

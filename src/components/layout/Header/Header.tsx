@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/logo.svg';
-import { mediaQuery } from '../utils/mediaQuery';
-import { ActionButtons } from './ActionButtons';
-import { NavLinks } from './NavLinks';
+import logo from '@/assets/images/logo.svg';
+import { mediaQuery } from '@/utils/mediaQuery';
+import { ActionButtons } from './components/ActionButtons';
+import { NavLinks } from './components/NavLinks';
 
 const HeaderContainer = styled.header`
 	width: 100%;

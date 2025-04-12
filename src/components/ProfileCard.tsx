@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { PROFILES } from '@/constants/profile';
+import { PROFILES } from '@/constants/user/profile';
 
 const ProfileContainer = styled.div`
 	display: flex;

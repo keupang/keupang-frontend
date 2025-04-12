@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/shared/SearchBar';
 import ProfileCard from '@/components/ProfileCard';
 import SeoHelmet from '../components/shared/SeoHelmet';
 

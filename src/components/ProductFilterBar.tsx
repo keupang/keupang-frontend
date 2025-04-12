@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { searchFilter } from '@/constants/search';
+import { searchFilter } from '../constants/product/search';
 import useQueryParams from '@/hooks/useQueryParams';
 import { mediaQuery } from '@/utils/mediaQuery';
 import { useEffect } from 'react';

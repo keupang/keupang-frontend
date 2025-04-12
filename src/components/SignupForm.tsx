@@ -9,7 +9,7 @@ import {
 } from '../utils/validation';
 
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { EMAIL_DOMAIN } from '../constants/emailDomain';
+import { EMAIL_DOMAIN } from '@constants/domain/emailDomain';
 import { Button } from './common/Button';
 
 import { useNavigation } from '../hooks/useNavigation';

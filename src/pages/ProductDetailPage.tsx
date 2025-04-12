@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProductDetail } from '@/hooks/products/useProductDetail';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/shared/SearchBar';
 import { Button } from '../components/common/Button';
 import { toast } from 'react-toastify';
 import { clampQuantity, parseQuantityInput } from '@/utils/quantity';
-import { MIN_QUANTITY, MAX_QUANTITY } from '@/constants/quantity';
+import { MIN_QUANTITY, MAX_QUANTITY } from '../constants/product/quantity';
 import {
 	ProductDetailPageContainer,
 	ProductTopSection,

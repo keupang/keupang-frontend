@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import Error from '../components/shared/Error';
-import { HTTP_STATUS_CODE } from '../constants/apis';
+import { HTTP_STATUS_CODE } from '../constants/api/apis';
 import { useNavigation } from '../hooks/useNavigation';
 
 const NotFoundPage = () => {
