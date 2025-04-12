@@ -1,5 +1,5 @@
 import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorFallback } from '../../shared/ErrorFallback';
+import { ErrorFallback } from '../../shared/ErrorFallback/ErrorFallback';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { HTTPError } from '../../../apis/HTTPError';
 

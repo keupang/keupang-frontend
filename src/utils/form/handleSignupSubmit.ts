@@ -1,4 +1,4 @@
-import { SignupFormData } from '../../pages/SignupPage/components/SignupForm';
+import { SignupFormData } from '../../pages/SignupPage/components/SignupForm/SignupForm';
 import { toast } from 'react-toastify';
 import { NavigationHookType } from '../../hooks/useNavigation';
 import { CustomDomainHookType } from '../../hooks/auth/useCustomDomain';

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Title } from '@/styles/commonStyles';
-import LoginForm from './components/LoginForm';
+import LoginForm from './components/LoginForm/LoginForm';
 
 interface LoginPageProps {}
 

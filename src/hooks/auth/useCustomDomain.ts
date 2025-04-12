@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { UseFormSetValue } from 'react-hook-form';
-import { SignupFormData } from '../../pages/SignupPage/components/SignupForm';
+import { SignupFormData } from '../../pages/SignupPage/components/SignupForm/SignupForm';
 
 export const useCustomDomain = (setValue: UseFormSetValue<SignupFormData>) => {
 	const [isCustomDomain, setIsCustomDomain] = useState(false);

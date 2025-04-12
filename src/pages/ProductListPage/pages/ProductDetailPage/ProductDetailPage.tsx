@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProductDetail } from '@/hooks/products/useProductDetail';
-import SearchBar from '@/components/shared/SearchBar';
-import { Button } from '@/components/common/Button';
+import SearchBar from '@/components/shared/SearchBar/SearchBar';
+import { Button } from '@/components/common/Button/Button';
 import { toast } from 'react-toastify';
-import {
-	clampQuantity,
-	parseQuantityInput,
-} from '../../../../utils/quantity/quantity';
+import { clampQuantity, parseQuantityInput } from '@/utils/quantity/quantity';
 import { MIN_QUANTITY, MAX_QUANTITY } from '@/constants/product/quantity';
 import {
 	ProductDetailPageContainer,
@@ -23,8 +20,8 @@ import {
 	DetailImageSection,
 	DetailImage,
 	QuantityInput,
-} from './styles/ProductDetailPage.styles';
-import SeoHelmet from '@/components/shared/SeoHelmet';
+} from './ProductDetailPage.styles';
+import SeoHelmet from '@/components/shared/SeoHelmet/SeoHelmet';
 
 const ProductDetailPage = () => {
 	const { id } = useParams();

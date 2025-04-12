@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import SearchBar from '@/components/shared/SearchBar';
-import ProfileCard from './components/ProfileCard';
-import SeoHelmet from '@/components/shared/SeoHelmet';
+import SearchBar from '../../components/shared/SearchBar/SearchBar';
+import ProfileCard from './components/ProfileCard/ProfileCard';
+import SeoHelmet from '../../components/shared/SeoHelmet/SeoHelmet';
 
 interface MainPageProps {}
 

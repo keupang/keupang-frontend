@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import SignupForm from './components/SignupForm';
+import SignupForm from './components/SignupForm/SignupForm';
 
 interface SignupPageProps {}
 

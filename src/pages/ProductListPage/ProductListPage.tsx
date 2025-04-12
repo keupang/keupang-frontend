@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { ProductList } from './components/ProductList';
-import ProductFilterBar from './components/ProductFilterBar';
-import SearchBar from '@/components/shared/SearchBar';
-import SeoHelmet from '../../components/shared/SeoHelmet';
+import { ProductList } from './components/ProductList/ProductList';
+import ProductFilterBar from './components/ProductFilterBar/ProductFilterBar';
+import SearchBar from '../../components/shared/SearchBar/SearchBar';
+import SeoHelmet from '../../components/shared/SeoHelmet/SeoHelmet';
 
 interface ProductListPageProps {}
 
