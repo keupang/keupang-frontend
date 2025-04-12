@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
-import SkeletonCard from './SkeletonCard';
+import SkeletonCard from './common/SkeletonCard';
 import { useProductsInfinite } from '../hooks/products/useProductsInfinite';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { useNavigation } from '@/hooks/useNavigation';
 import useQueryParams from '@/hooks/useQueryParams';
-import EmptyModal from './EmptyModal';
+import EmptyModal from './shared/EmptyModal';
 import { useOverlay } from '@/hooks/useOverlay';
 import { Flex } from '@/styles/commonStyles';
 

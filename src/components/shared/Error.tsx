@@ -1,9 +1,9 @@
-import { Button } from './Button';
-import { HTTP_ERROR_MESSAGE } from '../constants/apis';
+import { Button } from '../common/Button';
+import { HTTP_ERROR_MESSAGE } from '../../constants/apis';
 import ErrorImg from '../assets/images/ErrorImg.png';
 import styled from '@emotion/styled';
 import { Theme } from '@emotion/react';
-import { mediaQuery } from '../utils/mediaQuery';
+import { mediaQuery } from '../../utils/mediaQuery';
 
 interface ErrorProps {
 	errorCode: number;

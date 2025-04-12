@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Error from '../components/Error';
+import Error from '../components/shared/Error';
 import { HTTP_STATUS_CODE } from '../constants/apis';
 import { useNavigation } from '../hooks/useNavigation';
 

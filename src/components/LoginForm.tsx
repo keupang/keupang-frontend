@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useForm } from 'react-hook-form';
 import { LoginFlex } from './styles/LoginForm.styled';
 import { Input } from '@/styles/commonStyles';
-import { Button } from './Button';
+import { Button } from './common/Button';
 import useAuthLoginMutation from '@/hooks/quries/useAuthLoginMutation';
 import { handleLoginSubmit } from '@/utils/handleLoginSubmit';
 import { useNavigation } from '@/hooks/useNavigation';

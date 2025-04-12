@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from '@emotion/react';
 import { Button } from '../Button';
-import { lightTheme } from '../../styles/theme';
+import { lightTheme } from '../../../styles/theme';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('버튼 컴포넌트 테스트 > ', () => {

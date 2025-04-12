@@ -16,8 +16,8 @@ import {
 import { CustomThemeProvider } from './contexts/ThemeContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import GlobalErrorBoundary from './components/GlobalErrorBoundary';
-import Footer from './components/Footer';
+import GlobalErrorBoundary from './components/layout/GlobalErrorBoundary';
+import Footer from './components/layout/Footer';
 
 const StyledDiv = styled.div`
 	background-color: ${({ theme }) => theme.colors.background};

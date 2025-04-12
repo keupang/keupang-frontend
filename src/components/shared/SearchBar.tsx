@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button } from './Button';
+import { Button } from './common/Button';
 import styled from '@emotion/styled';
 import { Input } from '@/styles/commonStyles';
 import { AiOutlineSearch } from 'react-icons/ai';

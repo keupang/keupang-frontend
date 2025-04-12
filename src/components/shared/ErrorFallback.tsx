@@ -1,5 +1,5 @@
 import { FallbackProps } from 'react-error-boundary';
-import { HTTPError } from '../apis/HTTPError';
+import { HTTPError } from '../../apis/HTTPError';
 import Error from './Error';
 
 export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {

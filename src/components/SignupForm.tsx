@@ -10,7 +10,7 @@ import {
 
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { EMAIL_DOMAIN } from '../constants/emailDomain';
-import { Button } from '../components/Button';
+import { Button } from './common/Button';
 
 import { useNavigation } from '../hooks/useNavigation';
 import { useTimer } from '../hooks/useTimer';

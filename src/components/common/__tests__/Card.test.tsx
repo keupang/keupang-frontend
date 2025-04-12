@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@emotion/react';
 import { Card } from '../Card';
-import { lightTheme } from '../../styles/theme';
+import { lightTheme } from '../../../styles/theme';
 import { describe, it, expect } from 'vitest';
 
 describe('Card 컴포넌트', () => {
