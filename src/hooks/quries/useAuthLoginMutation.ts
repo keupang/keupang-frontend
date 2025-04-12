@@ -1,9 +1,9 @@
 import { useErrorBoundary } from 'react-error-boundary';
 import postAuthLogin, { LoginAuthData } from '@/apis/user/postAuthLogin';
-import { useMutation } from '../useMutation';
+import { useMutation } from '../auth/useMutation';
 import { HTTPError } from '@apis/HTTPError';
 import { toast } from 'react-toastify';
-import useAuth from '../useAuth';
+import useAuth from '../auth/useAuth';
 
 const useAuthLoginMutation = () => {
 	const { showBoundary } = useErrorBoundary();
