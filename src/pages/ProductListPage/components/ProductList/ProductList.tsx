@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import {
 	ProductListContainer,
 	ProductCard,
@@ -16,6 +16,7 @@ import SkeletonCard from '@/components/common/SkeletonCard/SkeletonCard';
 import { useProductsInfinite } from '@/hooks/products/useProductsInfinite';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { useNavigation } from '@/hooks/useNavigation';
+import { useImagePreloadList } from '@/hooks/useImagePreload';
 import useQueryParams from '@/hooks/useQueryParams';
 import EmptyModal from '@/components/shared/EmptyModal/EmptyModal';
 import { useOverlay } from '@/hooks/useOverlay';
@@ -36,6 +37,13 @@ export const ProductList = () => {
 	const { goToCategory, goToProductDetail } = useNavigation();
 	const { getQuery } = useQueryParams();
 	const emptyOverlay = useOverlay();
+
+	const preloadImageUrls = useMemo(
+		() => products.slice(0, initialSize).map((item) => item.product.imageUrl),
+		[products, initialSize]
+	);
+
+	useImagePreloadList(preloadImageUrls);
 
 	const category = getQuery('category');
 	const search = getQuery('search');
