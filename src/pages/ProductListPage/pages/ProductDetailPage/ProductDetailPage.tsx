@@ -23,11 +23,12 @@ import {
 } from './ProductDetailPage.styles';
 import SeoHelmet from '@/components/shared/SeoHelmet/SeoHelmet';
 import ProductDetailSkeleton from './components/ProductDetailSkeleton';
+import Empty from '@/components/shared/EmptyModal/components/Empty/Empty';
 
 const ProductDetailPage = () => {
 	const { id } = useParams();
 	const productId = Number(id);
-	const { data, isLoading } = useProductDetail(productId);
+	const { data, isError, isLoading } = useProductDetail(productId);
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
 	const [quantity, setQuantity] = useState<number>(1);
 
@@ -35,10 +36,15 @@ const ProductDetailPage = () => {
 
 	const stock = data?.data?.stock;
 
+	if (isLoading) return <ProductDetailSkeleton />;
+	if (isError) throw new Error('상품 정보를 불러오는 중 오류 발생');
 	if (!stock) {
 		return (
 			<ProductDetailPageContainer>
-				상품 정보를 불러올 수 없습니다.
+				<Empty
+					title='상품 정보가 존재하지 않습니다'
+					description='상품이 삭제되었거나 잘못된 경로로 접근했을 수 있어요.'
+				/>
 			</ProductDetailPageContainer>
 		);
 	}
