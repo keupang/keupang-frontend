@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
+import { useInsertionEffect } from 'react';
 
 export const useImagePreloadList = (urls: string[]) => {
-	useEffect(() => {
+	useInsertionEffect(() => {
 		const links: HTMLLinkElement[] = [];
-
 		urls.forEach((url) => {
 			if (!url) return;
 
