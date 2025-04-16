@@ -22,6 +22,7 @@ import {
 	QuantityInput,
 } from './ProductDetailPage.styles';
 import SeoHelmet from '@/components/shared/SeoHelmet/SeoHelmet';
+import ProductDetailSkeleton from './components/ProductDetailSkeleton';
 
 const ProductDetailPage = () => {
 	const { id } = useParams();
@@ -30,8 +31,7 @@ const ProductDetailPage = () => {
 	const [selectedImage, setSelectedImage] = useState<string | null>(null);
 	const [quantity, setQuantity] = useState<number>(1);
 
-	if (isLoading)
-		return <ProductDetailPageContainer>로딩 중...</ProductDetailPageContainer>;
+	if (isLoading) return <ProductDetailSkeleton />;
 
 	const stock = data?.data?.stock;
 
