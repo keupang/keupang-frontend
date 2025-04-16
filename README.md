@@ -113,6 +113,8 @@ $ yarn dev
 - 무한 스크롤 기반 로딩 및 Skeleton UI
 <img src="https://github.com/user-attachments/assets/7d743531-c703-437b-a571-0049bbf853bc" />
 
+<img src="https://github.com/user-attachments/assets/2087dda9-57f8-4037-aa08-daef4c3ef935" />
+
 
 ### 🧠 사용자 경험(UX) 중심 개선
 - LCP 이미지 `eager + fetchPriority=high` 적용
